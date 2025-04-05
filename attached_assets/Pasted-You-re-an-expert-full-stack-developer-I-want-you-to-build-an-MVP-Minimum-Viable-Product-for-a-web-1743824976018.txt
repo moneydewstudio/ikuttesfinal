@@ -1,0 +1,143 @@
+You're an expert full-stack developer. I want you to build an MVP (Minimum Viable Product) for a web-based Indonesian exam preparation platform, focused on CPNS, SNBT, and Psikotes tryouts.
+
+Objectives:
+Static site (Jamstack) with dynamic quiz behavior
+
+Mobile-first, SEO-optimized
+
+CMS-powered tryout & blog content
+
+Firebase-auth and real-time leaderboard
+
+Stack:
+Framework: Astro with React islands
+
+Styling: Tailwind CSS (custom utility-first)
+
+CMS: Decap CMS (Markdown-based, Git integration)
+
+Auth: Firebase Auth (Email + Google Login)
+
+Database: Firestore (only for leaderboard and user scores)
+
+Hosting: Netlify
+
+Analytics: Plausible or GA4
+
+Ad Monetization: Google AdSense placeholder
+
+Key Pages & Functionality:
+1. Home Page (/)
+Hero section with headline & CTA
+
+Category cards: CPNS, SNBT, Psikotes
+
+Section: Top Tryouts (dynamic cards)
+
+Section: Latest Blog Posts
+
+Footer: Tentang, Kontak, Kebijakan Privasi
+
+2. Tryout Page (/tryout/[slug])
+Load question set from Markdown/JSON
+
+Display one question at a time
+
+Timer component
+
+Track answers in state
+
+Submit button shows result page
+
+3. Result Page (/hasil/[id])
+Final score + percentage
+
+Rank from Firestore leaderboard
+
+Buttons: Coba Lagi, Review Jawaban, Share
+
+4. Leaderboard Page (/leaderboard/[slug])
+Read from Firestore
+
+Show top 20 scores
+
+Display name and score
+
+5. Auth Pages
+Firebase Google & Email login
+
+Simple dashboard: My Tryouts, Bookmarked Tryouts (future-ready)
+
+6. Blog (/blog, /blog/[slug])
+Static blog pages from Markdown via Decap CMS
+
+SEO meta tags (title, description, image)
+
+Category filter & search
+
+7. CMS Setup
+Decap CMS config for:
+
+Tryouts (title, slug, category, time, questions)
+
+Blog articles
+
+Admin panel at /admin
+
+Components to Build:
+<QuestionCard />: Handles options, progress, answer select
+
+<TryoutTimer />: Countdown logic with warning state
+
+<Leaderboard />: Fetch and display data from Firestore
+
+<ScoreCalculator />: Grades multiple-choice answers
+
+<AuthModal />: Firebase login modal
+
+<NavBar /> & <Footer />
+
+<BlogCard />: For blog previews
+
+Design Guidelines:
+Rounded corners (rounded-2xl), soft shadows
+
+Use Tailwind’s xl, base, sm sizes properly
+
+Grid layout for responsiveness
+
+Mobile-first breakpoints
+
+Include Dark Mode toggle if possible
+
+Icons via Lucide
+
+Ensure fast loading with minimal JS
+
+Content Requirements (for testing):
+3 CPNS tryouts
+
+2 SNBT tryouts
+
+2 Psikotes tryouts
+
+10 blog articles (dummy content okay)
+
+Optional Enhancements:
+Add PWA support
+
+Include share buttons (WhatsApp, Twitter)
+
+Enable bookmarking of tryouts (basic local storage)
+
+Deliverables:
+Full working Astro project with the above structure
+
+/content/ folder for CMS
+
+Firebase Auth + Firestore integration script
+
+netlify.toml for build settings
+
+Live preview URL (if hosted)
+
