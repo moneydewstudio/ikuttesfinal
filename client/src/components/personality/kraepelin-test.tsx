@@ -42,7 +42,8 @@ const getRandomNumber = (min: number, max: number) => {
 };
 
 // Generate a row of random single-digit numbers
-const generateRow = (length: number = 2): number[] => {
+// Changed to only generate a single number for the stacked UI
+const generateRow = (length: number = 1): number[] => {
   return Array.from({ length }, () => getRandomNumber(1, 9));
 };
 
@@ -149,8 +150,14 @@ export function KraepelinTest({ durationInMinutes, onComplete }: KraepelinTestPr
       const userAnswer = parseInt(value, 10);
       const currentProblem = visibleProblems[position];
       
-      // Calculate correct answer (sum of the row)
-      const correctAnswer = currentProblem.row.reduce((sum, num) => sum + num, 0);
+      // This is the current number
+      const currentNum = currentProblem.row[0];
+      
+      // For the vertical stacked UI, we need to get the next number to add (if it exists)
+      const nextNum = (position < visibleProblems.length - 1) ? visibleProblems[position + 1].row[0] : 0;
+      
+      // Calculate correct answer (sum of current and next number)
+      const correctAnswer = currentNum + nextNum;
       
       // Check if the last digit matches
       const isCorrect = userAnswer === correctAnswer % 10;
@@ -291,18 +298,18 @@ export function KraepelinTest({ durationInMinutes, onComplete }: KraepelinTestPr
             <div>
               <h3 className="font-semibold mb-1">Cara Mengerjakan:</h3>
               <ol className="list-decimal list-inside space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                <li>Anda akan melihat angka berderet yang harus dijumlahkan.</li>
-                <li>Jumlahkan setiap baris angka, lalu masukkan <strong>digit terakhir</strong> dari hasil penjumlahan.</li>
-                <li>Contoh: <span className="font-mono">6 + 8 = 14</span>, masukkan <span className="font-mono">4</span>.</li>
+                <li>Anda akan melihat satu kolom angka yang harus dijumlahkan satu per satu.</li>
+                <li>Lihat angka yang diberi highlight, lalu <strong>jumlahkan dengan angka di bawahnya</strong>.</li>
+                <li>Masukkan <strong>digit terakhir</strong> dari hasil penjumlahan.</li>
                 <li>Bekerjalah secepat dan seteliti mungkin. Fokus sangat penting!</li>
               </ol>
             </div>
             
             <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-md">
               <h3 className="font-semibold mb-1">Contoh:</h3>
-              <div className="grid grid-cols-2 gap-2 mb-2">
-                <div className="bg-white dark:bg-gray-700 p-2 rounded text-center font-mono">8</div>
-                <div className="bg-white dark:bg-gray-700 p-2 rounded text-center font-mono">7</div>
+              <div className="flex flex-col items-center space-y-2 mb-2">
+                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-2 rounded text-center font-mono w-12">8</div>
+                <div className="bg-white dark:bg-gray-700 p-2 rounded text-center font-mono w-12">7</div>
               </div>
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 <span className="font-mono">8 + 7 = 15</span>, masukkan <span className="font-mono">5</span>
@@ -385,86 +392,64 @@ export function KraepelinTest({ durationInMinutes, onComplete }: KraepelinTestPr
             </div>
           </div>
           
-          {/* Statistics */}
-          <div className="grid grid-cols-2 gap-4 mb-8">
-            <div className="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
-              <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">Total Jawaban</div>
-              <div className="text-2xl font-bold">{totalAnswers}</div>
-            </div>
-            
-            <div className="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
-              <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">Jawaban Benar</div>
-              <div className="text-2xl font-bold">
-                {correctAnswers} 
-                <span className="text-sm font-normal text-gray-500 ml-1">
-                  ({totalAnswers > 0 ? Math.round((correctAnswers / totalAnswers) * 100) : 0}%)
-                </span>
+
+          
+          {/* Test problems - Redesigned for vertical stacked numbers */}
+          <div className="mb-8 flex">
+            {/* Scrollable column of numbers */}
+            <div className="w-1/2 mr-4">
+              <h3 className="text-lg font-semibold mb-4">Angka:</h3>
+              
+              <div className="h-[360px] overflow-y-auto pr-2 hide-scrollbar">
+                <div className="flex flex-col items-center space-y-4">
+                  {visibleProblems.map((problem, index) => (
+                    <div 
+                      key={index}
+                      className={`p-2 rounded-lg w-full transition-colors ${
+                        index === position 
+                          ? 'bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800' 
+                          : index < position && problem.isCorrect !== null
+                            ? problem.isCorrect 
+                              ? 'bg-green-50 dark:bg-green-900/10' 
+                              : 'bg-red-50 dark:bg-red-900/10'
+                            : ''
+                      }`}
+                    >
+                      <div className="flex justify-center">
+                        {problem.row.map((num, i) => (
+                          <div 
+                            key={i} 
+                            className="bg-white dark:bg-gray-700 w-16 h-16 rounded flex items-center justify-center text-3xl font-mono shadow-sm"
+                          >
+                            {num}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-          
-          {/* Test problems */}
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold mb-4">Selesaikan penjumlahan berikut:</h3>
             
-            <div className="h-[360px] overflow-hidden relative">
-              <div className="absolute inset-0 border-t border-b border-gray-200 dark:border-gray-700 pointer-events-none"></div>
+            {/* Fixed input box */}
+            <div className="w-1/2 flex flex-col">
+              <h3 className="text-lg font-semibold mb-4">Jawaban:</h3>
               
-              <div className="grid grid-cols-1 gap-4 py-4">
-                {visibleProblems.map((problem, index) => (
-                  <div 
-                    key={index}
-                    className={`grid grid-cols-3 items-center p-2 rounded-lg transition-colors ${
-                      index === position 
-                        ? 'bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800' 
-                        : index < position && problem.isCorrect !== null
-                          ? problem.isCorrect 
-                            ? 'bg-green-50 dark:bg-green-900/10' 
-                            : 'bg-red-50 dark:bg-red-900/10'
-                          : ''
-                    }`}
-                  >
-                    <div className="grid grid-cols-2 gap-2">
-                      {problem.row.map((num, i) => (
-                        <div 
-                          key={i} 
-                          className="bg-white dark:bg-gray-700 w-12 h-12 rounded flex items-center justify-center text-2xl font-mono shadow-sm"
-                        >
-                          {num}
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <div className="flex justify-center">
-                      <ArrowRightCircle className="w-6 h-6 text-gray-400" />
-                    </div>
-                    
-                    <div className="flex justify-end">
-                      {index === position ? (
-                        <input
-                          ref={inputRef}
-                          type="text"
-                          inputMode="numeric"
-                          maxLength={1}
-                          autoFocus
-                          disabled={isPaused}
-                          className="w-12 h-12 rounded bg-white dark:bg-gray-700 border-2 border-blue-300 dark:border-blue-600 text-center text-2xl font-mono shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          onChange={handleInputChange}
-                        />
-                      ) : (
-                        <div className={`w-12 h-12 rounded flex items-center justify-center text-2xl font-mono ${
-                          problem.userAnswer !== null
-                            ? problem.isCorrect
-                              ? 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-200'
-                              : 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-200'
-                            : 'bg-white dark:bg-gray-700'
-                        }`}>
-                          {problem.userAnswer !== null ? problem.userAnswer : ''}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ))}
+              <div className="flex-grow flex items-center justify-center">
+                <div className="text-center">
+                  <p className="text-gray-500 dark:text-gray-400 mb-4">Masukkan digit terakhir dari hasil penjumlahan</p>
+                  
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    inputMode="numeric"
+                    maxLength={1}
+                    autoFocus
+                    disabled={isPaused}
+                    className="w-20 h-20 rounded bg-white dark:bg-gray-700 border-2 border-blue-300 dark:border-blue-600 text-center text-4xl font-mono shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    onChange={handleInputChange}
+                  />
+                </div>
               </div>
             </div>
           </div>
