@@ -394,39 +394,68 @@ export function KraepelinTest({ durationInMinutes, onComplete }: KraepelinTestPr
           
 
           
-          {/* Test problems - Redesigned for vertical stacked numbers */}
+          {/* Test problems - Redesigned for vertical stacked numbers with fixed highlighted row */}
           <div className="mb-8 flex">
-            {/* Scrollable column of numbers */}
             <div className="w-1/2 mr-4">
               <h3 className="text-lg font-semibold mb-4">Angka:</h3>
               
-              <div className="h-[360px] overflow-y-auto pr-2 hide-scrollbar">
-                <div className="flex flex-col items-center space-y-4">
-                  {visibleProblems.map((problem, index) => (
-                    <div 
-                      key={index}
-                      className={`p-2 rounded-lg w-full transition-colors ${
-                        index === position 
-                          ? 'bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800' 
-                          : index < position && problem.isCorrect !== null
-                            ? problem.isCorrect 
-                              ? 'bg-green-50 dark:bg-green-900/10' 
-                              : 'bg-red-50 dark:bg-red-900/10'
-                            : ''
-                      }`}
-                    >
-                      <div className="flex justify-center">
-                        {problem.row.map((num, i) => (
-                          <div 
-                            key={i} 
-                            className="bg-white dark:bg-gray-700 w-16 h-16 rounded flex items-center justify-center text-3xl font-mono shadow-sm"
-                          >
-                            {num}
-                          </div>
-                        ))}
+              <div className="relative h-[360px]">
+                {/* Fixed highlighted number (current) */}
+                <div className="sticky top-0 z-10 mb-2">
+                  {position < visibleProblems.length && (
+                    <div className="flex justify-center p-2 rounded-lg w-full bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+                      <div 
+                        className="bg-white dark:bg-gray-700 w-16 h-16 rounded flex items-center justify-center text-3xl font-mono shadow-sm"
+                      >
+                        {visibleProblems[position].row[0]}
                       </div>
                     </div>
-                  ))}
+                  )}
+                </div>
+                
+                {/* Scrollable column of other numbers */}
+                <div className="h-[300px] overflow-y-auto pr-2 hide-scrollbar border-t border-b border-gray-200 dark:border-gray-700">
+                  <div className="flex flex-col items-center space-y-4 pt-4">
+                    {visibleProblems.slice(position + 1).map((problem, index) => (
+                      <div 
+                        key={`next-${index}`}
+                        className="p-2 rounded-lg w-full"
+                      >
+                        <div className="flex justify-center">
+                          <div 
+                            className="bg-white dark:bg-gray-700 w-16 h-16 rounded flex items-center justify-center text-3xl font-mono shadow-sm"
+                          >
+                            {problem.row[0]}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                    
+                    {/* Add some padding elements at the end for better UX */}
+                    {Array.from({ length: 3 }).map((_, index) => (
+                      <div key={`padding-${index}`} className="p-2 w-full opacity-0">
+                        <div className="flex justify-center">
+                          <div className="w-16 h-16"></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Previously answered numbers (if needed) */}
+                <div className="mt-2">
+                  {position > 0 && (
+                    <div className="flex justify-between items-center">
+                      <div className="text-sm text-gray-500">Terakhir dijawab:</div>
+                      <div className={`text-sm ${
+                        visibleProblems[position-1].isCorrect
+                          ? 'text-green-600 dark:text-green-400'
+                          : 'text-red-600 dark:text-red-400'
+                      }`}>
+                        {visibleProblems[position-1].isCorrect ? '✓ Benar' : '✗ Salah'}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -437,7 +466,9 @@ export function KraepelinTest({ durationInMinutes, onComplete }: KraepelinTestPr
               
               <div className="flex-grow flex items-center justify-center">
                 <div className="text-center">
-                  <p className="text-gray-500 dark:text-gray-400 mb-4">Masukkan digit terakhir dari hasil penjumlahan</p>
+                  <p className="text-gray-500 dark:text-gray-400 mb-4">
+                    Masukkan digit terakhir<br />dari hasil penjumlahan
+                  </p>
                   
                   <input
                     ref={inputRef}
