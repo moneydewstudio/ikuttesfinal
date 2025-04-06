@@ -67,6 +67,8 @@ export function KraepelinTest({ durationInMinutes, onComplete }: KraepelinTestPr
   // Test problems
   const [visibleProblems, setVisibleProblems] = useState<KraepelinProblem[]>([]);
   const [position, setPosition] = useState(0);
+  const [lastInput, setLastInput] = useState<string | null>(null);
+  const [lastCorrect, setLastCorrect] = useState<boolean | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   
   // Initialize or reset the problem set
@@ -162,6 +164,10 @@ export function KraepelinTest({ durationInMinutes, onComplete }: KraepelinTestPr
       // Check if the last digit matches
       const isCorrect = userAnswer === correctAnswer % 10;
       
+      // Save the input for display and feedback
+      setLastInput(value);
+      setLastCorrect(isCorrect);
+      
       // Update the current problem
       const updatedProblems = [...visibleProblems];
       updatedProblems[position] = {
@@ -178,30 +184,40 @@ export function KraepelinTest({ durationInMinutes, onComplete }: KraepelinTestPr
       }
       sectionAnswers.current += 1;
       
-      // Move to the next problem and clear input
-      setVisibleProblems(updatedProblems);
-      e.target.value = '';
-      
-      // Move to the next position or add a new problem
-      if (position < visibleProblems.length - 1) {
-        setPosition(position + 1);
-      } else {
-        // Add a new problem and shift the visible window
-        const newProblems = [...updatedProblems];
-        newProblems.push({
-          row: generateRow(),
-          userAnswer: null,
-          isCorrect: null,
-        });
+      // Short delay to show feedback before moving to next problem
+      setTimeout(() => {
+        // Move to the next problem and clear input
+        setVisibleProblems(updatedProblems);
+        e.target.value = '';
+        setLastInput(null);
+        setLastCorrect(null);
         
-        if (newProblems.length > 12) {
-          newProblems.shift(); // Remove the first problem if we have more than 12
-        } else {
+        // Move to the next position or add a new problem
+        if (position < visibleProblems.length - 1) {
           setPosition(position + 1);
+        } else {
+          // Add a new problem and shift the visible window
+          const newProblems = [...updatedProblems];
+          newProblems.push({
+            row: generateRow(),
+            userAnswer: null,
+            isCorrect: null,
+          });
+          
+          if (newProblems.length > 12) {
+            newProblems.shift(); // Remove the first problem if we have more than 12
+          } else {
+            setPosition(position + 1);
+          }
+          
+          setVisibleProblems(newProblems);
         }
         
-        setVisibleProblems(newProblems);
-      }
+        // Keep focus on the input
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      }, 150); // Short delay (150ms) to show feedback but still feel responsive
     }
   };
   
@@ -470,16 +486,38 @@ export function KraepelinTest({ durationInMinutes, onComplete }: KraepelinTestPr
                     Masukkan digit terakhir<br />dari hasil penjumlahan
                   </p>
                   
-                  <input
-                    ref={inputRef}
-                    type="text"
-                    inputMode="numeric"
-                    maxLength={1}
-                    autoFocus
-                    disabled={isPaused}
-                    className="w-20 h-20 rounded bg-white dark:bg-gray-700 border-2 border-blue-300 dark:border-blue-600 text-center text-4xl font-mono shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    onChange={handleInputChange}
-                  />
+                  <div className="relative">
+                    <input
+                      ref={inputRef}
+                      type="text"
+                      inputMode="numeric"
+                      maxLength={1}
+                      autoFocus
+                      disabled={isPaused}
+                      value={lastInput || ''}
+                      className={`w-20 h-20 rounded bg-white dark:bg-gray-700 border-2 text-center text-4xl font-mono shadow-sm focus:outline-none focus:ring-2 
+                        ${lastCorrect === true 
+                          ? 'border-green-500 dark:border-green-400 focus:ring-green-500' 
+                          : lastCorrect === false
+                            ? 'border-red-500 dark:border-red-400 focus:ring-red-500'
+                            : 'border-blue-300 dark:border-blue-600 focus:ring-blue-500'
+                        }`}
+                      onChange={handleInputChange}
+                    />
+                    
+                    {/* Show the user's input clearly */}
+                    {lastInput && (
+                      <div className={`absolute inset-0 flex items-center justify-center text-4xl font-mono pointer-events-none
+                        ${lastCorrect === true 
+                          ? 'text-green-600 dark:text-green-400' 
+                          : lastCorrect === false
+                            ? 'text-red-600 dark:text-red-400'
+                            : 'text-gray-900 dark:text-gray-100'
+                        }`}>
+                        {lastInput}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
