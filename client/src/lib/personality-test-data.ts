@@ -1,4 +1,4 @@
-export type PersonalityTestType = 'MBTI' | 'HEXACO' | 'BIG_FIVE';
+export type PersonalityTestType = 'MBTI' | 'HEXACO' | 'BIG_FIVE' | 'DISC';
 
 export type PersonalityQuestion = {
   id: string;
@@ -663,7 +663,288 @@ const hexacoTest: PersonalityTest = {
   }
 };
 
-export const personalityTests = [mbtiTest, bigFiveTest, hexacoTest];
+// DISC Test
+const discTest: PersonalityTest = {
+  id: 'disc-test',
+  slug: 'disc-test',
+  title: 'DISC Personality Assessment',
+  description: 'DISC mengukur empat aspek utama kepribadian: Dominance (D), Influence (I), Steadiness (S), dan Conscientiousness (C). Tes ini membantu Anda memahami gaya perilaku dan komunikasi Anda.',
+  type: 'DISC',
+  timeInMinutes: 10,
+  questions: [
+    // Dominance (D)
+    {
+      id: 'disc-1',
+      text: 'Saya cenderung langsung pada intinya dalam diskusi.',
+      factor: 'D',
+      options: [
+        { id: 'disc-1-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-1-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-1-3', text: 'Netral', value: 3 },
+        { id: 'disc-1-4', text: 'Setuju', value: 4 },
+        { id: 'disc-1-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    {
+      id: 'disc-2',
+      text: 'Saya lebih suka mengambil kendali dalam situasi kelompok.',
+      factor: 'D',
+      options: [
+        { id: 'disc-2-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-2-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-2-3', text: 'Netral', value: 3 },
+        { id: 'disc-2-4', text: 'Setuju', value: 4 },
+        { id: 'disc-2-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    {
+      id: 'disc-3',
+      text: 'Saya menyukai tantangan dan kompetisi.',
+      factor: 'D',
+      options: [
+        { id: 'disc-3-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-3-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-3-3', text: 'Netral', value: 3 },
+        { id: 'disc-3-4', text: 'Setuju', value: 4 },
+        { id: 'disc-3-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    {
+      id: 'disc-4',
+      text: 'Saya tidak takut menghadapi konflik atau perselisihan.',
+      factor: 'D',
+      options: [
+        { id: 'disc-4-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-4-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-4-3', text: 'Netral', value: 3 },
+        { id: 'disc-4-4', text: 'Setuju', value: 4 },
+        { id: 'disc-4-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    
+    // Influence (I)
+    {
+      id: 'disc-5',
+      text: 'Saya suka berinteraksi dengan banyak orang yang berbeda.',
+      factor: 'I',
+      options: [
+        { id: 'disc-5-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-5-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-5-3', text: 'Netral', value: 3 },
+        { id: 'disc-5-4', text: 'Setuju', value: 4 },
+        { id: 'disc-5-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    {
+      id: 'disc-6',
+      text: 'Saya dapat dengan mudah membujuk orang lain agar setuju dengan pendapat saya.',
+      factor: 'I',
+      options: [
+        { id: 'disc-6-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-6-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-6-3', text: 'Netral', value: 3 },
+        { id: 'disc-6-4', text: 'Setuju', value: 4 },
+        { id: 'disc-6-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    {
+      id: 'disc-7',
+      text: 'Saya menikmati menjadi pusat perhatian.',
+      factor: 'I',
+      options: [
+        { id: 'disc-7-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-7-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-7-3', text: 'Netral', value: 3 },
+        { id: 'disc-7-4', text: 'Setuju', value: 4 },
+        { id: 'disc-7-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    {
+      id: 'disc-8',
+      text: 'Saya menunjukkan antusiasme dan optimisme saat bekerja dalam tim.',
+      factor: 'I',
+      options: [
+        { id: 'disc-8-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-8-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-8-3', text: 'Netral', value: 3 },
+        { id: 'disc-8-4', text: 'Setuju', value: 4 },
+        { id: 'disc-8-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    
+    // Steadiness (S)
+    {
+      id: 'disc-9',
+      text: 'Saya lebih suka lingkungan yang stabil dan dapat diprediksi.',
+      factor: 'S',
+      options: [
+        { id: 'disc-9-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-9-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-9-3', text: 'Netral', value: 3 },
+        { id: 'disc-9-4', text: 'Setuju', value: 4 },
+        { id: 'disc-9-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    {
+      id: 'disc-10',
+      text: 'Saya cenderung sabar dan tidak terburu-buru dalam pekerjaan saya.',
+      factor: 'S',
+      options: [
+        { id: 'disc-10-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-10-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-10-3', text: 'Netral', value: 3 },
+        { id: 'disc-10-4', text: 'Setuju', value: 4 },
+        { id: 'disc-10-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    {
+      id: 'disc-11',
+      text: 'Saya suka mendengarkan pendapat orang lain sebelum menyampaikan pendapat saya sendiri.',
+      factor: 'S',
+      options: [
+        { id: 'disc-11-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-11-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-11-3', text: 'Netral', value: 3 },
+        { id: 'disc-11-4', text: 'Setuju', value: 4 },
+        { id: 'disc-11-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    {
+      id: 'disc-12',
+      text: 'Saya sering menjadi penengah dalam konflik.',
+      factor: 'S',
+      options: [
+        { id: 'disc-12-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-12-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-12-3', text: 'Netral', value: 3 },
+        { id: 'disc-12-4', text: 'Setuju', value: 4 },
+        { id: 'disc-12-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    
+    // Conscientiousness (C)
+    {
+      id: 'disc-13',
+      text: 'Saya sangat memperhatikan detail dan akurasi.',
+      factor: 'C',
+      options: [
+        { id: 'disc-13-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-13-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-13-3', text: 'Netral', value: 3 },
+        { id: 'disc-13-4', text: 'Setuju', value: 4 },
+        { id: 'disc-13-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    {
+      id: 'disc-14',
+      text: 'Saya lebih suka bekerja dengan aturan dan prosedur yang jelas.',
+      factor: 'C',
+      options: [
+        { id: 'disc-14-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-14-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-14-3', text: 'Netral', value: 3 },
+        { id: 'disc-14-4', text: 'Setuju', value: 4 },
+        { id: 'disc-14-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    {
+      id: 'disc-15',
+      text: 'Saya menganalisis situasi secara mendalam sebelum mengambil keputusan.',
+      factor: 'C',
+      options: [
+        { id: 'disc-15-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-15-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-15-3', text: 'Netral', value: 3 },
+        { id: 'disc-15-4', text: 'Setuju', value: 4 },
+        { id: 'disc-15-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+    {
+      id: 'disc-16',
+      text: 'Saya menghindari kesalahan dengan merencanakan secara hati-hati.',
+      factor: 'C',
+      options: [
+        { id: 'disc-16-1', text: 'Sangat Tidak Setuju', value: 1 },
+        { id: 'disc-16-2', text: 'Tidak Setuju', value: 2 },
+        { id: 'disc-16-3', text: 'Netral', value: 3 },
+        { id: 'disc-16-4', text: 'Setuju', value: 4 },
+        { id: 'disc-16-5', text: 'Sangat Setuju', value: 5 },
+      ],
+    },
+  ],
+  factors: {
+    'D': {
+      name: 'Dominance (D)',
+      description: 'Kecenderungan untuk mengontrol, memimpin, dan menghadapi tantangan',
+      scoreInterpretation: {
+        low: 'Anda cenderung lebih kooperatif, menghindari konflik, dan lebih suka bekerja sebagai bagian dari tim daripada memimpin.',
+        medium: 'Anda dapat menjadi pemimpin ketika diperlukan, tapi tidak selalu merasa perlu untuk mengontrol situasi.',
+        high: 'Anda sangat berorientasi pada hasil, kompetitif, dan suka mengambil tantangan. Anda cenderung langsung dan tegas.'
+      }
+    },
+    'I': {
+      name: 'Influence (I)',
+      description: 'Kecenderungan untuk mempengaruhi atau membujuk orang lain',
+      scoreInterpretation: {
+        low: 'Anda cenderung lebih reflektif dan kurang ekspresif, mungkin lebih nyaman bekerja sendiri daripada dalam kelompok besar.',
+        medium: 'Anda dapat bersosialisasi dengan baik tapi juga menghargai waktu untuk diri sendiri. Anda dapat menyesuaikan diri dengan berbagai situasi sosial.',
+        high: 'Anda sangat ramah, antusias, dan optimis. Anda menikmati bekerja dengan orang lain dan cenderung memotivasi mereka dengan antusiasme Anda.'
+      }
+    },
+    'S': {
+      name: 'Steadiness (S)',
+      description: 'Kecenderungan untuk konsistensi dan kesabaran',
+      scoreInterpretation: {
+        low: 'Anda lebih fleksibel dan menyukai perubahan, dapat beralih antara tugas-tugas dengan cepat, dan mungkin tidak sabar dengan rutinitas.',
+        medium: 'Anda dapat beradaptasi dengan perubahan tapi juga menghargai stabilitas. Anda mencari keseimbangan antara fleksibilitas dan konsistensi.',
+        high: 'Anda sangat sabar, dapat diandalkan, dan konsisten. Anda lebih suka lingkungan yang stabil dan dapat diprediksi, dan cenderung setia dan mendukung.'
+      }
+    },
+    'C': {
+      name: 'Conscientiousness (C)',
+      description: 'Kecenderungan untuk ketelitian dan kepatuhan pada aturan',
+      scoreInterpretation: {
+        low: 'Anda lebih spontan dan kurang terstruktur, lebih berfokus pada gambaran besar daripada detail, dan mungkin kurang terorganisir.',
+        medium: 'Anda menghargai struktur tapi masih fleksibel, dan dapat menyeimbangkan pendekatan sistematis dengan kreativitas.',
+        high: 'Anda sangat analitis, teratur, dan berorientasi pada detail. Anda mementingkan presisi dan akurasi, serta cenderung bekerja dengan standar tinggi.'
+      }
+    }
+  }
+};
+
+// Calculate DISC type based on factor scores
+export const calculateDISCType = (scores: {[key: string]: number}): string => {
+  // Find the highest score
+  let highestFactor = '';
+  let highestScore = 0;
+  
+  for (const factor in scores) {
+    if (scores[factor] > highestScore) {
+      highestScore = scores[factor];
+      highestFactor = factor;
+    }
+  }
+  
+  // Find the second highest score if it's close to the highest
+  let secondHighestFactor = '';
+  let secondHighestScore = 0;
+  
+  for (const factor in scores) {
+    if (factor !== highestFactor && scores[factor] > secondHighestScore) {
+      secondHighestScore = scores[factor];
+      secondHighestFactor = factor;
+    }
+  }
+  
+  // If the second highest score is close to the highest (within 0.5), consider it a combination type
+  if (highestScore - secondHighestScore < 0.5) {
+    return `${highestFactor}${secondHighestFactor}`;
+  }
+  
+  return highestFactor;
+};
+
+export const personalityTests = [mbtiTest, bigFiveTest, hexacoTest, discTest];
 
 export const getPersonalityTestBySlug = (slug: string): PersonalityTest | undefined => {
   return personalityTests.find(test => test.slug === slug);

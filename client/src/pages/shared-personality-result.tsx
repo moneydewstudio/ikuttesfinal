@@ -56,6 +56,11 @@ export default function SharedPersonalityResult() {
             'E': 2.8,
             'A': 3.9,
             'N': 2.2
+          } : foundTest.type === 'DISC' ? {
+            'D': 3.8,
+            'I': 4.2,
+            'S': 2.5,
+            'C': 3.1
           } : {
             'H': 3.6,
             'E': 2.9,
@@ -65,7 +70,8 @@ export default function SharedPersonalityResult() {
             'O': 4.5
           })
         },
-        mainType: foundTest.type === 'MBTI' ? 'INFJ' : undefined,
+        mainType: foundTest.type === 'MBTI' ? 'INFJ' : 
+                 foundTest.type === 'DISC' ? 'DI' : undefined,
         timestamp: Date.now() - 86400000, // 1 day ago
       };
       

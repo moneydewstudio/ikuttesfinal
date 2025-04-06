@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useRoute, useLocation } from "wouter";
 import { 
   getPersonalityTestBySlug, 
-  calculateMBTIType, 
+  calculateMBTIType,
+  calculateDISCType,
   interpretScores,
   PersonalityQuestion,
   PersonalityResult
@@ -161,10 +162,12 @@ export default function PersonalityTest() {
       finalScores[factor] = Number(average.toFixed(2));
     });
     
-    // Calculate MBTI type if applicable
+    // Calculate main type if applicable
     let mainType: string | undefined = undefined;
     if (test.type === 'MBTI') {
       mainType = calculateMBTIType(finalScores);
+    } else if (test.type === 'DISC') {
+      mainType = calculateDISCType(finalScores);
     }
     
     // Create the result object
@@ -300,6 +303,15 @@ export default function PersonalityTest() {
                   <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-soft hover:shadow-medium cursor-pointer transition-shadow">
                     <h3 className="font-semibold text-gray-900 dark:text-white">HEXACO Personality Inventory</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400">Jelajahi enam dimensi kepribadian Anda, termasuk Kejujuran-Kerendahan hati.</p>
+                  </div>
+                </Link>
+              )}
+              
+              {slug !== 'disc-test' && (
+                <Link href="/personality-test/disc-test">
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-soft hover:shadow-medium cursor-pointer transition-shadow">
+                    <h3 className="font-semibold text-gray-900 dark:text-white">DISC Personality Assessment</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Kenali gaya perilaku dan komunikasi Anda melalui empat dimensi DISC.</p>
                   </div>
                 </Link>
               )}

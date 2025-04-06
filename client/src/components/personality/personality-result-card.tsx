@@ -130,6 +130,71 @@ export function PersonalityResultCard({
     );
   };
   
+  const renderDISCResult = () => {
+    if (result.testType !== 'DISC' || !result.mainType) return null;
+    
+    // Define descriptions for different DISC types
+    const discDescriptions: Record<string, string> = {
+      'D': 'Dominance - Anda langsung, tegas, dan berorientasi pada hasil. Anda menyukai tantangan dan mengambil keputusan cepat.',
+      'I': 'Influence - Anda antusias, optimis, dan suka bersosialisasi. Anda menginspirasi orang lain dan berfokus pada membangun hubungan.',
+      'S': 'Steadiness - Anda sabar, setia, dan dapat diandalkan. Anda konsisten, mendukung orang lain, dan menghargai kerja sama.',
+      'C': 'Conscientiousness - Anda analitis, sistematis, dan berorientasi pada detail. Anda mementingkan akurasi dan kualitas yang tinggi.',
+      'DI': 'Dominance-Influence - Anda percaya diri dan berorientasi pada hasil, tetapi juga memotivasi orang lain dan bersemangat dalam tim.',
+      'DS': 'Dominance-Steadiness - Anda tegas dan terorganisir, mengejar tujuan dengan pendekatan yang stabil dan langkah yang konsisten.',
+      'DC': 'Dominance-Conscientiousness - Anda berorientasi pada hasil dan detail, membuat keputusan berdasarkan analisis mendalam.',
+      'ID': 'Influence-Dominance - Anda karismatik dan berani, memotivasi orang lain sambil tetap fokus pada pencapaian tujuan.',
+      'IS': 'Influence-Steadiness - Anda ramah dan suportif, membangun hubungan yang harmonis dan berkelanjutan dengan orang lain.',
+      'IC': 'Influence-Conscientiousness - Anda antusias dan teliti, menciptakan ide-ide inovatif yang juga direncanakan dengan hati-hati.',
+      'SD': 'Steadiness-Dominance - Anda sabar dan tegas, stabil dalam pendekatan Anda sambil menjaga fokus pada tujuan.',
+      'SI': 'Steadiness-Influence - Anda hangat dan ramah, menciptakan lingkungan yang harmonis dan mendukung untuk tim.',
+      'SC': 'Steadiness-Conscientiousness - Anda dapat diandalkan dan akurat, bekerja dengan konsisten dan memastikan kualitas.',
+      'CD': 'Conscientiousness-Dominance - Anda analitis dan berorientasi pada tujuan, menggunakan logika untuk mencapai hasil.',
+      'CI': 'Conscientiousness-Influence - Anda terorganisir dan persuasif, menggabungkan perhatian pada detail dengan komunikasi yang efektif.',
+      'CS': 'Conscientiousness-Steadiness - Anda metodis dan dapat diandalkan, bekerja dengan teliti dan konsisten.'
+    };
+    
+    // Background colors for different DISC types
+    const getTypeColor = (type: string) => {
+      const firstLetter = type.charAt(0);
+      switch(firstLetter) {
+        case 'D': return 'bg-red-200 dark:bg-red-800 text-red-700 dark:text-red-300';
+        case 'I': return 'bg-yellow-200 dark:bg-yellow-800 text-yellow-700 dark:text-yellow-300';
+        case 'S': return 'bg-green-200 dark:bg-green-800 text-green-700 dark:text-green-300';
+        case 'C': return 'bg-blue-200 dark:bg-blue-800 text-blue-700 dark:text-blue-300';
+        default: return 'bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300';
+      }
+    };
+    
+    // Background for the card based on primary DISC type
+    const cardBgColor = result.mainType.charAt(0) === 'D' ? 'bg-red-50 dark:bg-red-900/20' :
+                       result.mainType.charAt(0) === 'I' ? 'bg-yellow-50 dark:bg-yellow-900/20' :
+                       result.mainType.charAt(0) === 'S' ? 'bg-green-50 dark:bg-green-900/20' :
+                       'bg-blue-50 dark:bg-blue-900/20';
+    
+    // Text color for the card based on primary DISC type
+    const cardTextColor = result.mainType.charAt(0) === 'D' ? 'text-red-700 dark:text-red-300' :
+                         result.mainType.charAt(0) === 'I' ? 'text-yellow-700 dark:text-yellow-300' :
+                         result.mainType.charAt(0) === 'S' ? 'text-green-700 dark:text-green-300' :
+                         'text-blue-700 dark:text-blue-300';
+    
+    return (
+      <div className={`mb-6 p-4 ${cardBgColor} rounded-xl`}>
+        <div className="flex justify-between items-center mb-4">
+          <h3 className={`text-xl font-bold ${cardTextColor}`}>
+            Tipe DISC Anda
+          </h3>
+          <div className={`w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold ${getTypeColor(result.mainType)}`}>
+            {result.mainType}
+          </div>
+        </div>
+        
+        <p className={cardTextColor}>
+          {discDescriptions[result.mainType] || `Tipe DISC: ${result.mainType}`}
+        </p>
+      </div>
+    );
+  };
+  
   const getShareUrl = () => {
     // In a real app, this would be a proper sharing URL with the result ID
     const baseUrl = window.location.origin;
@@ -150,6 +215,7 @@ export function PersonalityResultCard({
           <div className={`w-12 h-12 rounded-lg flex items-center justify-center 
             ${result.testType === 'MBTI' ? 'bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-300' : 
               result.testType === 'BIG_FIVE' ? 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300' : 
+              result.testType === 'DISC' ? 'bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300' : 
               'bg-teal-100 text-teal-600 dark:bg-teal-900 dark:text-teal-300'}`}
           >
             <Brain className="w-6 h-6" />
@@ -160,6 +226,9 @@ export function PersonalityResultCard({
       <CardContent className="space-y-4">
         {/* Display MBTI type if available */}
         {renderMBTIResult()}
+        
+        {/* Display DISC type if available */}
+        {renderDISCResult()}
         
         {/* Factor scores */}
         <div>
