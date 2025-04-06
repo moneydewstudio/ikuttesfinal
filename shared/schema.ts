@@ -10,6 +10,7 @@ export const users = pgTable("users", {
   email: text("email").notNull().unique(),
   displayName: text("display_name"),
   photoURL: text("photo_url"),
+  personalityResults: jsonb("personality_results"), // Store personality test results
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -85,6 +86,53 @@ export const insertBlogPostSchema = createInsertSchema(blogPosts).pick({
   authorId: true,
 });
 
+// Personality test model
+export const personalityTests = pgTable("personality_tests", {
+  id: serial("id").primaryKey(),
+  slug: text("slug").notNull().unique(),
+  title: text("title").notNull(),
+  description: text("description").notNull(),
+  type: text("type").notNull(), // MBTI, HEXACO, BIG_FIVE
+  timeInMinutes: integer("time_in_minutes").notNull(),
+  questions: jsonb("questions").notNull(),
+  factors: jsonb("factors").notNull(),
+  participants: integer("participants").default(0),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertPersonalityTestSchema = createInsertSchema(personalityTests).pick({
+  slug: true,
+  title: true,
+  description: true,
+  type: true,
+  timeInMinutes: true,
+  questions: true,
+  factors: true,
+});
+
+// Personality result model
+export const personalityResults = pgTable("personality_results", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull(),
+  testId: integer("test_id").notNull(),
+  testType: text("test_type").notNull(), // MBTI, HEXACO, BIG_FIVE
+  scores: jsonb("scores").notNull(),
+  mainType: text("main_type"), // For MBTI e.g. "INTJ"
+  answers: jsonb("answers").notNull(),
+  isPublic: boolean("is_public").default(true),
+  submittedAt: timestamp("submitted_at").defaultNow().notNull(),
+});
+
+export const insertPersonalityResultSchema = createInsertSchema(personalityResults).pick({
+  userId: true,
+  testId: true,
+  testType: true,
+  scores: true,
+  mainType: true,
+  answers: true,
+  isPublic: true,
+});
+
 // Types
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
@@ -97,3 +145,9 @@ export type Result = typeof results.$inferSelect;
 
 export type InsertBlogPost = z.infer<typeof insertBlogPostSchema>;
 export type BlogPost = typeof blogPosts.$inferSelect;
+
+export type InsertPersonalityTest = z.infer<typeof insertPersonalityTestSchema>;
+export type PersonalityTest = typeof personalityTests.$inferSelect;
+
+export type InsertPersonalityResult = z.infer<typeof insertPersonalityResultSchema>;
+export type PersonalityResult = typeof personalityResults.$inferSelect;

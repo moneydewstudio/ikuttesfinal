@@ -10,6 +10,9 @@ import Result from "@/pages/result";
 import Leaderboard from "@/pages/leaderboard";
 import BlogList from "@/pages/blog-list";
 import BlogPost from "@/pages/blog-post";
+import PersonalityTestList from "@/pages/personality-test-list";
+import PersonalityTest from "@/pages/personality-test";
+import SharedPersonalityResult from "@/pages/shared-personality-result";
 import { UserProvider } from "@/lib/user-context";
 import { useEffect, useState } from "react";
 import { initDarkMode } from "@/lib/dark-mode";
@@ -28,6 +31,9 @@ function Router() {
       <Route path="/leaderboard/:slug" component={Leaderboard} />
       <Route path="/blog" component={BlogList} />
       <Route path="/blog/:slug" component={BlogPost} />
+      <Route path="/personality-tests" component={PersonalityTestList} />
+      <Route path="/personality-test/:slug" component={PersonalityTest} />
+      <Route path="/shared-result/:testId/:testType" component={SharedPersonalityResult} />
       <Route component={NotFound} />
     </Switch>
   );

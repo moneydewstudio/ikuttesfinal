@@ -239,6 +239,89 @@ export default function Home() {
           </div>
         </section>
         
+        {/* Personality Tests */}
+        <section className="py-12 md:py-16 bg-white dark:bg-gray-900">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold">Tes Kepribadian</h2>
+              <Link href="/personality-tests">
+                <a className="mt-4 md:mt-0 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center">
+                  <span>Lihat Semua Tes</span>
+                  <ArrowRight className="w-4 h-4 ml-1" />
+                </a>
+              </Link>
+            </div>
+            
+            <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-2xl p-6 md:p-8 mb-8">
+              <div className="flex flex-col md:flex-row items-center">
+                <div className="mb-6 md:mb-0 md:w-1/2 md:pr-8">
+                  <div className="text-sm font-semibold text-primary-600 dark:text-primary-400 mb-2">FITUR BARU</div>
+                  <h3 className="text-2xl font-bold mb-4">Kenali Dirimu Lebih Dalam</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-6">
+                    Tes kepribadian kami membantu Anda memahami kepribadian, kekuatan dan kelemahan Anda.
+                    Ambil tes standar seperti MBTI, Big Five, atau HEXACO dan dapatkan hasil yang dapat dibagikan.
+                  </p>
+                  <Link href="/personality-tests">
+                    <a className="inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white px-5 py-3 rounded-xl font-medium transition-colors duration-200">
+                      <span>Coba Tes Kepribadian</span>
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </a>
+                  </Link>
+                </div>
+                <div className="md:w-1/2 grid grid-cols-2 gap-4">
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm">
+                    <div className="w-10 h-10 rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-300 flex items-center justify-center mb-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 16c2.5-4.2 4-6.3 4-8a4 4 0 0 0-8 0c0 1.7 1.5 3.8 4 8Z"/>
+                      </svg>
+                    </div>
+                    <h4 className="font-semibold text-lg">MBTI</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Temukan tipe kepribadian dari 16 jenis berbeda
+                    </p>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm">
+                    <div className="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300 flex items-center justify-center mb-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="m7 15 5-5 5 5"/>
+                      </svg>
+                    </div>
+                    <h4 className="font-semibold text-lg">Big Five</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Ukur kepribadian berdasarkan lima dimensi utama
+                    </p>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm">
+                    <div className="w-10 h-10 rounded-lg bg-teal-100 text-teal-600 dark:bg-teal-900 dark:text-teal-300 flex items-center justify-center mb-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                        <polygon points="12 2 17.5 7.5 17.5 16.5 12 22 6.5 16.5 6.5 7.5 12 2"/>
+                      </svg>
+                    </div>
+                    <h4 className="font-semibold text-lg">HEXACO</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Pelajari enam dimensi kepribadian Anda
+                    </p>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm">
+                    <div className="w-10 h-10 rounded-lg bg-pink-100 text-pink-600 dark:bg-pink-900 dark:text-pink-300 flex items-center justify-center mb-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                        <path d="M17 12a5 5 0 0 0-5-5 1 1 0 0 0 0 2 3 3 0 0 1 0 6 1 1 0 0 0 0 2 5 5 0 0 0 5-5Z"/>
+                        <path d="M5 12a5 5 0 0 1 5-5 1 1 0 0 1 0 2 3 3 0 0 0 0 6 1 1 0 0 1 0 2 5 5 0 0 1-5-5Z"/>
+                      </svg>
+                    </div>
+                    <h4 className="font-semibold text-lg">Hasil</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Dapatkan hasil yang dapat dibagikan dengan mudah
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Leaderboard Preview */}
         <LeaderboardPreview />
         
