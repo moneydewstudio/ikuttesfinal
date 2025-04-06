@@ -12,6 +12,7 @@ import BlogList from "@/pages/blog-list";
 import BlogPost from "@/pages/blog-post";
 import PersonalityTestList from "@/pages/personality-test-list";
 import PersonalityTest from "@/pages/personality-test";
+import KraepelinTest from "@/pages/kraepelin-test";
 import SharedPersonalityResult from "@/pages/shared-personality-result";
 import { UserProvider } from "@/lib/user-context";
 import { useEffect, useState } from "react";
@@ -33,6 +34,7 @@ function Router() {
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/personality-tests" component={PersonalityTestList} />
       <Route path="/personality-test/:slug" component={PersonalityTest} />
+      <Route path="/kraepelin-test/:slug" component={KraepelinTest} />
       <Route path="/shared-result/:testId/:testType" component={SharedPersonalityResult} />
       <Route component={NotFound} />
     </Switch>

@@ -1,4 +1,4 @@
-export type PersonalityTestType = 'MBTI' | 'HEXACO' | 'BIG_FIVE' | 'DISC';
+export type PersonalityTestType = 'MBTI' | 'HEXACO' | 'BIG_FIVE' | 'DISC' | 'KRAEPELIN';
 
 export type PersonalityQuestion = {
   id: string;
@@ -944,7 +944,67 @@ export const calculateDISCType = (scores: {[key: string]: number}): string => {
   return highestFactor;
 };
 
-export const personalityTests = [mbtiTest, bigFiveTest, hexacoTest, discTest];
+// Kraepelin Test
+const kraepelinTest: PersonalityTest = {
+  id: 'kraepelin-test',
+  slug: 'kraepelin-test',
+  title: 'Kraepelin Arithmetic Test',
+  description: 'Tes Kraepelin mengukur konsentrasi, kecepatan, ketelitian, dan ketahanan kerja mental Anda melalui operasi aritmatika berurutan. Tes ini digunakan untuk menilai kemampuan kognitif Anda.',
+  type: 'KRAEPELIN',
+  timeInMinutes: 5, // Can be adjusted later
+  questions: [
+    // The Kraepelin test doesn't have traditional questions like other personality tests
+    // We'll use a placeholder question here, but the actual test will be implemented differently
+    {
+      id: 'kraepelin-1',
+      text: 'Kraepelin Test',
+      factor: 'SPEED',
+      options: [
+        { id: 'kraepelin-1-1', text: 'Start', value: 0 },
+      ],
+    }
+  ],
+  factors: {
+    'SPEED': {
+      name: 'Kecepatan',
+      description: 'Seberapa cepat Anda dapat melakukan perhitungan berurutan',
+      scoreInterpretation: {
+        low: 'Anda melakukan perhitungan dengan kecepatan rendah, mungkin karena lebih berhati-hati dan cermat.',
+        medium: 'Anda melakukan perhitungan dengan kecepatan rata-rata, menyeimbangkan antara kecepatan dan ketelitian.',
+        high: 'Anda melakukan perhitungan dengan kecepatan tinggi, menunjukkan kemampuan memproses angka dengan cepat.'
+      }
+    },
+    'ACCURACY': {
+      name: 'Ketelitian',
+      description: 'Seberapa akurat perhitungan Anda',
+      scoreInterpretation: {
+        low: 'Anda melakukan perhitungan dengan tingkat akurasi rendah, mungkin karena bekerja terlalu cepat atau kurang fokus.',
+        medium: 'Anda melakukan perhitungan dengan tingkat akurasi rata-rata, cukup seimbang antara kecepatan dan ketelitian.',
+        high: 'Anda melakukan perhitungan dengan tingkat akurasi tinggi, menunjukkan fokus dan konsentrasi yang baik.'
+      }
+    },
+    'CONSISTENCY': {
+      name: 'Konsistensi',
+      description: 'Seberapa konsisten performa Anda selama tes',
+      scoreInterpretation: {
+        low: 'Performa Anda tidak konsisten selama tes, menunjukkan fluktuasi dalam konsentrasi atau motivasi.',
+        medium: 'Performa Anda cukup konsisten selama tes, dengan sedikit variasi dalam kecepatan atau akurasi.',
+        high: 'Performa Anda sangat konsisten selama tes, menunjukkan ketahanan mental dan stabilitas dalam bekerja.'
+      }
+    },
+    'ENDURANCE': {
+      name: 'Ketahanan Mental',
+      description: 'Seberapa baik Anda mempertahankan performa selama tes',
+      scoreInterpretation: {
+        low: 'Anda menunjukkan penurunan performa seiring berjalannya tes, yang mungkin menandakan kelelahan mental.',
+        medium: 'Anda mempertahankan performa cukup baik selama tes, dengan sedikit penurunan.',
+        high: 'Anda mempertahankan performa sangat baik dari awal hingga akhir tes, menunjukkan ketahanan mental yang tinggi.'
+      }
+    }
+  }
+};
+
+export const personalityTests = [mbtiTest, bigFiveTest, hexacoTest, discTest, kraepelinTest];
 
 export const getPersonalityTestBySlug = (slug: string): PersonalityTest | undefined => {
   return personalityTests.find(test => test.slug === slug);

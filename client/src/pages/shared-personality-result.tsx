@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { ArrowLeft, AlertTriangle, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PersonalityResultCard } from "@/components/personality/personality-result-card";
+import { KraepelinResultCard } from "@/components/personality/kraepelin-result-card";
 import { personalityTests, PersonalityResult, PersonalityTest } from "@/lib/personality-test-data";
 
 export default function SharedPersonalityResult() {
@@ -61,6 +62,11 @@ export default function SharedPersonalityResult() {
             'I': 4.2,
             'S': 2.5,
             'C': 3.1
+          } : foundTest.type === 'KRAEPELIN' ? {
+            'SPEED': 3.8,
+            'ACCURACY': 4.1,
+            'CONSISTENCY': 3.5,
+            'ENDURANCE': 3.2
           } : {
             'H': 3.6,
             'E': 2.9,
@@ -137,11 +143,33 @@ export default function SharedPersonalityResult() {
         </p>
       </div>
       
-      <PersonalityResultCard
-        result={result}
-        test={test}
-        isShared={true}
-      />
+      {test.type === 'KRAEPELIN' && result ? (
+        <KraepelinResultCard
+          results={{
+            totalAnswers: 120,
+            correctAnswers: 105,
+            accuracy: 0.875,
+            speed: result.scores['SPEED'],
+            consistency: result.scores['CONSISTENCY'],
+            endurance: result.scores['ENDURANCE'],
+            sections: [
+              { time: 60, answers: 24, correct: 21 },
+              { time: 120, answers: 25, correct: 22 },
+              { time: 180, answers: 23, correct: 20 },
+              { time: 240, answers: 25, correct: 21 },
+              { time: 300, answers: 23, correct: 21 }
+            ]
+          }}
+          test={test}
+          isShared={true}
+        />
+      ) : (
+        <PersonalityResultCard
+          result={result}
+          test={test}
+          isShared={true}
+        />
+      )}
       
       <div className="mt-8">
         <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
@@ -150,7 +178,7 @@ export default function SharedPersonalityResult() {
         <p className="text-gray-600 dark:text-gray-400 mb-4">
           Ambil tes yang sama untuk menemukan kepribadian Anda dan bandingkan hasilnya.
         </p>
-        <Link href={`/personality-test/${test.slug}`}>
+        <Link href={test.type === 'KRAEPELIN' ? `/kraepelin-test/${test.slug}` : `/personality-test/${test.slug}`}>
           <Button className="w-full md:w-auto">
             Mulai Tes {test.title}
           </Button>

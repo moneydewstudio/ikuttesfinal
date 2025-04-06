@@ -30,6 +30,10 @@ export function PersonalityTestCard({
         return 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300';
       case 'HEXACO':
         return 'bg-teal-100 text-teal-600 dark:bg-teal-900 dark:text-teal-300';
+      case 'KRAEPELIN':
+        return 'bg-cyan-100 text-cyan-600 dark:bg-cyan-900 dark:text-cyan-300';
+      case 'DISC':
+        return 'bg-orange-100 text-orange-600 dark:bg-orange-900 dark:text-orange-300';
       default:
         return 'bg-primary-100 text-primary-600 dark:bg-primary-900 dark:text-primary-300';
     }
@@ -46,7 +50,9 @@ export function PersonalityTestCard({
             <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">
               {type === 'MBTI' ? 'Myers-Briggs Type Indicator' :
                type === 'BIG_FIVE' ? 'Big Five Personality Test' :
-               type === 'HEXACO' ? 'HEXACO Personality Inventory' : 'Personality Test'}
+               type === 'HEXACO' ? 'HEXACO Personality Inventory' :
+               type === 'DISC' ? 'DISC Personality Assessment' :
+               type === 'KRAEPELIN' ? 'Kraepelin Arithmetic Test' : 'Personality Test'}
             </span>
           </div>
         </div>
@@ -68,11 +74,16 @@ export function PersonalityTestCard({
           
           <div className="flex items-center">
             <PenLine className="w-4 h-4 mr-1" />
-            <span>{type === 'MBTI' ? '12' : type === 'BIG_FIVE' ? '10' : '12'} pertanyaan</span>
+            <span>
+              {type === 'MBTI' ? '12 pertanyaan' : 
+               type === 'BIG_FIVE' ? '10 pertanyaan' : 
+               type === 'KRAEPELIN' ? 'arithmetic test' : 
+               '12 pertanyaan'}
+            </span>
           </div>
         </div>
         
-        <Link href={`/personality-test/${slug}`}>
+        <Link href={type === 'KRAEPELIN' ? `/kraepelin-test/${slug}` : `/personality-test/${slug}`}>
           <Button className="w-full bg-primary-600 hover:bg-primary-700 text-white">
             Mulai Tes
           </Button>
