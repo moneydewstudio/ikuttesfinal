@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import { Facebook, Twitter, Link as LinkIcon } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 type KraepelinResultCardProps = {
   results: KraepelinResults;
@@ -88,26 +89,53 @@ export function KraepelinResultCard({
       </CardHeader>
       
       <CardContent className="space-y-6">
-        {/* Summary metrics */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg flex flex-col">
-            <div className="flex items-center text-cyan-600 dark:text-cyan-400 mb-2">
-              <Activity className="w-4 h-4 mr-2" />
-              <span className="font-medium">Total Jawaban</span>
-            </div>
-            <span className="text-3xl font-bold">{results.totalAnswers}</span>
-          </div>
+        {/* Top Summary - Eye-catching results overview */}
+        <div className="p-6 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 rounded-xl border border-blue-100 dark:border-blue-800 text-center">
+          <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Ringkasan Performa</h3>
           
-          <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg flex flex-col">
-            <div className="flex items-center text-green-600 dark:text-green-400 mb-2">
-              <CheckCircle className="w-4 h-4 mr-2" />
-              <span className="font-medium">Jawaban Benar</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+              <div className="flex justify-center mb-2">
+                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                  <Activity className="w-5 h-5" />
+                </div>
+              </div>
+              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">{results.totalAnswers}</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">Total Jawaban</div>
             </div>
-            <div className="flex items-center">
-              <span className="text-3xl font-bold">{results.correctAnswers}</span>
-              <span className="ml-2 text-gray-500">
-                ({Math.round((results.correctAnswers / results.totalAnswers) * 100) || 0}%)
-              </span>
+            
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+              <div className="flex justify-center mb-2">
+                <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400">
+                  <CheckCircle className="w-5 h-5" />
+                </div>
+              </div>
+              <div className="text-3xl font-bold text-green-600 dark:text-green-400">{results.correctAnswers}</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">Jawaban Benar</div>
+            </div>
+            
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+              <div className="flex justify-center mb-2">
+                <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-600 dark:text-purple-400">
+                  <BarChart className="w-5 h-5" />
+                </div>
+              </div>
+              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">
+                {Math.round((results.correctAnswers / results.totalAnswers) * 100) || 0}%
+              </div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">Akurasi</div>
+            </div>
+            
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+              <div className="flex justify-center mb-2">
+                <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-600 dark:text-amber-400">
+                  <Clock className="w-5 h-5" />
+                </div>
+              </div>
+              <div className="text-3xl font-bold text-amber-600 dark:text-amber-400">
+                {Math.round(results.totalAnswers / (results.columns?.length || 1))}
+              </div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">Rata-rata per Kolom</div>
             </div>
           </div>
         </div>
@@ -203,11 +231,64 @@ export function KraepelinResultCard({
           </div>
         </div>
         
-        {/* Performance over time */}
+        {/* Performance chart */}
         {results.columns && results.columns.length > 0 && (
           <div>
             <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-              Performa Sepanjang Kolom
+              Grafik Performa
+            </h3>
+            
+            <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart
+                  data={results.columns.map((column, index) => ({
+                    name: `Kolom ${index + 1}`,
+                    column: index + 1,
+                    answers: column.answers,
+                    accuracy: column.answers > 0 ? Math.round((column.correct / column.answers) * 100) : 0,
+                  }))}
+                  margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="column" label={{ value: 'Nomor Kolom', position: 'insideBottomRight', offset: -5 }} />
+                  <YAxis yAxisId="left" label={{ value: 'Jumlah Jawaban', angle: -90, position: 'insideLeft' }} />
+                  <YAxis yAxisId="right" orientation="right" domain={[0, 100]} label={{ value: 'Akurasi (%)', angle: -90, position: 'insideRight' }} />
+                  <Tooltip formatter={(value, name) => {
+                    if (name === 'accuracy') return [`${value}%`, 'Akurasi'];
+                    return [value, 'Jumlah Jawaban'];
+                  }} />
+                  <Legend />
+                  <Line 
+                    yAxisId="left"
+                    type="monotone" 
+                    dataKey="answers" 
+                    name="Jumlah Jawaban" 
+                    stroke="#3b82f6" 
+                    strokeWidth={2}
+                    dot={{ r: 3 }}
+                    activeDot={{ r: 5 }}
+                  />
+                  <Line 
+                    yAxisId="right" 
+                    type="monotone" 
+                    dataKey="accuracy" 
+                    name="Akurasi (%)" 
+                    stroke="#10b981" 
+                    strokeWidth={2}
+                    dot={{ r: 3 }}
+                    activeDot={{ r: 5 }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+            
+            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+              Detail Performa per Kolom
             </h3>
             
             <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
