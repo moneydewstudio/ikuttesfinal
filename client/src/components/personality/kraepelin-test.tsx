@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { ArrowRightCircle, XCircle, PlayCircle, PauseCircle, AlertTriangle } from 'lucide-react';
+import { ArrowRightCircle, XCircle, PlayCircle, PauseCircle, AlertTriangle, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -10,6 +10,7 @@ import {
   DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
+import { Badge } from '@/components/ui/badge';
 
 type KraepelinTestProps = {
   durationInMinutes: number;
@@ -23,17 +24,27 @@ export type KraepelinResults = {
   speed: number;
   consistency: number;
   endurance: number;
-  sections: {
-    time: number;
+  columns: {
     answers: number;
     correct: number;
+    accuracy: number;
   }[];
 };
 
+// Represents a single number in the test with its result
 type KraepelinProblem = {
-  row: number[];
+  value: number;
   userAnswer: number | null;
   isCorrect: boolean | null;
+};
+
+// Represents a column of 60 numbers (authentic Kraepelin format)
+type KraepelinColumn = {
+  numbers: KraepelinProblem[];
+  completed: boolean;
+  answers: number;
+  correct: number;
+  timeSpent: number;
 };
 
 // Helper to generate a random number between min and max (inclusive)
@@ -41,10 +52,13 @@ const getRandomNumber = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-// Generate a row of random single-digit numbers
-// Changed to only generate a single number for the stacked UI
-const generateRow = (length: number = 1): number[] => {
-  return Array.from({ length }, () => getRandomNumber(1, 9));
+// Generate a column of random single-digit numbers for Kraepelin test
+const generateColumn = (length: number = 60): KraepelinProblem[] => {
+  return Array.from({ length }, () => ({
+    value: getRandomNumber(1, 9),
+    userAnswer: null,
+    isCorrect: null
+  }));
 };
 
 export function KraepelinTest({ durationInMinutes, onComplete }: KraepelinTestProps) {

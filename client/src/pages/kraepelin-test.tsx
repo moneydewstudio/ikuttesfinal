@@ -3,7 +3,7 @@ import { useRoute, Link } from 'wouter';
 import { ArrowLeft, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getPersonalityTestBySlug } from '@/lib/personality-test-data';
-import { KraepelinTest, KraepelinResults } from '@/components/personality/kraepelin-test';
+import { AuthenticKraepelinTest, KraepelinResults } from '@/components/personality/authentic-kraepelin-test';
 import { KraepelinResultCard } from '@/components/personality/kraepelin-result-card';
 import { useUser } from '@/lib/user-context';
 import { useToast } from '@/hooks/use-toast';
@@ -91,7 +91,7 @@ export default function KraepelinTestPage() {
             {test.description}
           </p>
           
-          <KraepelinTest 
+          <AuthenticKraepelinTest 
             durationInMinutes={test.timeInMinutes} 
             onComplete={handleComplete} 
           />

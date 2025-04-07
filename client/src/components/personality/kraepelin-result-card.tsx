@@ -1,4 +1,4 @@
-import { KraepelinResults } from './kraepelin-test';
+import { KraepelinResults } from './authentic-kraepelin-test';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -204,28 +204,26 @@ export function KraepelinResultCard({
         </div>
         
         {/* Performance over time */}
-        {results.sections.length > 0 && (
+        {results.columns && results.columns.length > 0 && (
           <div>
             <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-              Performa Sepanjang Waktu
+              Performa Sepanjang Kolom
             </h3>
             
             <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-              <div className="grid grid-cols-4 gap-2 mb-2 text-xs text-gray-500 dark:text-gray-400">
-                <div>Bagian</div>
-                <div>Waktu</div>
+              <div className="grid grid-cols-3 gap-2 mb-2 text-xs text-gray-500 dark:text-gray-400">
+                <div>Kolom</div>
                 <div>Jawaban</div>
                 <div>Akurasi</div>
               </div>
               
-              {results.sections.map((section, index) => (
-                <div key={index} className="grid grid-cols-4 gap-2 py-2 border-t border-gray-200 dark:border-gray-700">
+              {results.columns.map((column, index) => (
+                <div key={index} className="grid grid-cols-3 gap-2 py-2 border-t border-gray-200 dark:border-gray-700">
                   <div className="font-medium">{index + 1}</div>
-                  <div>{Math.floor(section.time / 60)}:{(section.time % 60).toString().padStart(2, '0')}</div>
-                  <div>{section.answers}</div>
+                  <div>{column.answers}</div>
                   <div>
-                    {section.answers > 0 
-                      ? `${Math.round((section.correct / section.answers) * 100)}%` 
+                    {column.answers > 0 
+                      ? `${Math.round((column.correct / column.answers) * 100)}%` 
                       : 'N/A'}
                   </div>
                 </div>
