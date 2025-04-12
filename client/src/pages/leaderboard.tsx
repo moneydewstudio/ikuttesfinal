@@ -28,12 +28,12 @@ export default function Leaderboard() {
       <Helmet>
         <title>
           {selectedTryout 
-            ? `Leaderboard ${selectedTryout.title} | EdukasiBersama` 
-            : "Leaderboard | EdukasiBersama"}
+            ? `Leaderboard ${selectedTryout.title} | Ikuttes` 
+            : "Leaderboard | Ikuttes"}
         </title>
         <meta 
           name="description" 
-          content={`Lihat ranking teratas peserta tryout ${selectedTryout?.title || "EdukasiBersama"}.`} 
+          content={`Lihat ranking teratas peserta tryout ${selectedTryout?.title || "Ikuttes"}.`} 
         />
       </Helmet>
       

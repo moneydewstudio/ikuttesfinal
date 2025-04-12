@@ -139,7 +139,7 @@ export default function Result() {
   return (
     <>
       <Helmet>
-        <title>Hasil Tryout | EdukasiBersama</title>
+        <title>Hasil Tryout | Ikuttes</title>
         <meta 
           name="description" 
           content={`Hasil tryout ${result.tryoutTitle} dengan skor ${result.score.percentage}%.`} 

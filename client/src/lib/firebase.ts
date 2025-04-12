@@ -4,11 +4,13 @@ import { getFirestore } from "firebase/firestore";
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.firebaseapp.com`,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.appspot.com`,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: "AIzaSyAVMZz54RU0q9T4Db4R3qVaqIVoLm7JDNs",
+  authDomain: "psikopop-ba307.firebaseapp.com",
+  projectId: "psikopop-ba307",
+  storageBucket: "psikopop-ba307.firebasestorage.app",
+  messagingSenderId: "654380154713",
+  appId: "1:654380154713:web:347cee0ddb36f2fe0e9648",
+  measurementId: "G-Q10XR26GK1"
 };
 
 // Initialize Firebase

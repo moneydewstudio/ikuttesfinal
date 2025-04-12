@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>EdukasiBersama - Platform Persiapan Ujian Indonesia</title>
+        <title>Ikuttes - Platform Persiapan Ujian Indonesia</title>
         <meta name="description" content="Platform persiapan ujian Indonesia untuk CPNS, SNBT, dan Psikotes dengan tryout interaktif dan materi pembelajaran." />
       </Helmet>
       

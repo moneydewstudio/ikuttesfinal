@@ -11,7 +11,7 @@ export function Footer() {
               <span className="bg-primary-600 text-white p-1.5 rounded-lg">
                 <BookOpen className="w-6 h-6" />
               </span>
-              <span className="text-xl font-bold text-white">EdukasiBersama</span>
+              <span className="text-xl font-bold text-white">Ikuttes</span>
             </div>
             <p className="text-gray-400 mb-4">
               Platform persiapan ujian Indonesia yang membantu kamu meraih hasil terbaik dalam CPNS, SNBT, dan Psikotes.
@@ -109,7 +109,7 @@ export function Footer() {
         </div>
         
         <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">© 2023 EdukasiBersama. Hak Cipta Dilindungi.</p>
+          <p className="text-gray-500 text-sm">© 2023 Ikuttes. Hak Cipta Dilindungi.</p>
           <div className="mt-4 md:mt-0">
             <a href="#" className="text-gray-500 hover:text-white text-sm">Bahasa: Indonesia</a>
           </div>

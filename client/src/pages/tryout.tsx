@@ -199,7 +199,7 @@ export default function Tryout() {
   return (
     <>
       <Helmet>
-        <title>{tryout.title} | EdukasiBersama</title>
+        <title>{tryout.title} | Ikuttes</title>
         <meta 
           name="description" 
           content={`Ikuti tryout ${tryout.title} untuk persiapan ${tryout.category} dengan soal-soal terbaru.`} 

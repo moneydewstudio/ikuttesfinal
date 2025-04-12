@@ -69,7 +69,7 @@ export default function BlogPostPage() {
   return (
     <>
       <Helmet>
-        <title>{post.title} | EdukasiBersama</title>
+        <title>{post.title} | Ikuttes</title>
         <meta name="description" content={post.excerpt} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />

@@ -1,6 +1,6 @@
-# EdukasiBersama - Platform Persiapan Ujian Indonesia
+# Ikuttes - Platform Persiapan Ujian Indonesia
 
-EdukasiBersama adalah platform persiapan ujian untuk siswa Indonesia yang mempersiapkan ujian CPNS, SNBT, dan Psikotes. Platform ini menyediakan simulasi tryout, leaderboard untuk memantau performa, dan artikel pembelajaran.
+Ikuttes adalah platform persiapan ujian untuk siswa Indonesia yang mempersiapkan ujian CPNS, SNBT, dan Psikotes. Platform ini menyediakan simulasi tryout, leaderboard untuk memantau performa, dan artikel pembelajaran.
 
 ## Fitur
 

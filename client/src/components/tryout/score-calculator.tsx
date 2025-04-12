@@ -69,7 +69,7 @@ export function ScoreCalculator({
     // Implement sharing logic
     if (navigator.share) {
       navigator.share({
-        title: 'Hasil Tryout EdukasiBersama',
+        title: 'Hasil Tryout Ikuttes',
         text: `Saya berhasil menyelesaikan tryout ${category} dengan skor ${scores.score}%. Coba juga yuk!`,
         url: window.location.href,
       });
