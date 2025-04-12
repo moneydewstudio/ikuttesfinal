@@ -52,8 +52,8 @@ export default function TryoutList() {
       <Helmet>
         <title>
           {category 
-            ? `Tryout ${category} | EdukasiBersama` 
-            : "Semua Tryout | EdukasiBersama"}
+            ? `Tryout ${category} | Ikuttes` 
+            : "Semua Tryout | Ikuttes"}
         </title>
         <meta 
           name="description" 

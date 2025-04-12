@@ -50,7 +50,7 @@ export function Navbar() {
             <span className="bg-primary text-white p-1.5 rounded-lg">
               <BookOpen className="w-6 h-6" />
             </span>
-            <span className="text-xl font-bold text-primary-700 dark:text-primary-400">EdukasiBersama</span>
+            <span className="text-xl font-bold text-primary-700 dark:text-primary-400">Ikuttes</span>
           </Link>
         </div>
         

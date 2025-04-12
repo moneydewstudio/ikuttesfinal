@@ -51,12 +51,12 @@ export default function BlogList() {
       <Helmet>
         <title>
           {activeCategory !== 'all' 
-            ? `Blog ${activeCategory} | EdukasiBersama` 
-            : "Blog | EdukasiBersama"}
+            ? `Blog ${activeCategory} | Ikuttes` 
+            : "Blog | Ikuttes"}
         </title>
         <meta 
           name="description" 
-          content={`Artikel dan tips terkait ${activeCategory !== 'all' ? activeCategory : "ujian"} dari EdukasiBersama.`} 
+          content={`Artikel dan tips terkait ${activeCategory !== 'all' ? activeCategory : "ujian"} dari Ikuttes.`} 
         />
       </Helmet>
       

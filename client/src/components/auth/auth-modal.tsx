@@ -72,7 +72,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                   <BookOpen className="w-6 h-6" />
                 </span>
               </div>
-              <h3 className="text-xl font-bold">Masuk ke EdukasiBersama</h3>
+              <h3 className="text-xl font-bold">Masuk ke Ikuttes</h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">
                 Akses berbagai tryout dan pantau progressmu
               </p>
