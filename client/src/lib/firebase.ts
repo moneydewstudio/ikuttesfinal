@@ -1,3 +1,4 @@
+
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -7,6 +8,23 @@ import {
   signOut,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+
+// Validate environment variables
+const requiredEnvVars = [
+  'VITE_FIREBASE_API_KEY',
+  'VITE_FIREBASE_AUTH_DOMAIN',
+  'VITE_FIREBASE_PROJECT_ID',
+  'VITE_FIREBASE_STORAGE_BUCKET',
+  'VITE_FIREBASE_MESSAGING_SENDER_ID',
+  'VITE_FIREBASE_APP_ID',
+  'VITE_FIREBASE_MEASUREMENT_ID'
+] as const;
+
+for (const envVar of requiredEnvVars) {
+  if (!import.meta.env[envVar]) {
+    throw new Error(`Missing required environment variable: ${envVar}`);
+  }
+}
 
 // Firebase configuration
 const firebaseConfig = {
@@ -20,7 +38,17 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+let app;
+try {
+  app = initializeApp(firebaseConfig);
+} catch (error) {
+  if (error.code === 'app/duplicate-app') {
+    app = initializeApp(firebaseConfig, 'default');
+  } else {
+    throw error;
+  }
+}
+
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
@@ -29,9 +57,6 @@ export const loginWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
   try {
     await signInWithRedirect(auth, provider);
-    // The user will be redirected to the Google sign-in page
-    // After signing in, they'll be redirected back to the app
-    // The redirect result will be handled in handleRedirectResult function
   } catch (error) {
     console.error("Error signing in with Google", error);
     throw error;
@@ -42,7 +67,6 @@ export const handleRedirectResult = async () => {
   try {
     const result = await getRedirectResult(auth);
     if (result) {
-      // User successfully signed in
       return result.user;
     }
     return null;
