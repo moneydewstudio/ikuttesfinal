@@ -4,7 +4,7 @@ export type BlogPost = {
   title: string;
   excerpt: string;
   content: string;
-  category: 'CPNS' | 'SNBT' | 'Psikotes';
+  category: "CPNS" | "SNBT" | "Psikotes";
   date: string;
   imageUrl: string;
 };
@@ -13,8 +13,9 @@ export const blogPosts: BlogPost[] = [
   {
     id: "blog-1",
     slug: "strategi-jitu-tes-skd-cpns",
-    title: "10 Strategi Jitu Menghadapi Tes SKD CPNS 2023",
-    excerpt: "Pelajari strategi terbaik untuk menaklukkan Seleksi Kompetensi Dasar (SKD) CPNS dengan persiapan yang tepat dan efektif.",
+    title: "10 Strategi Jitu Menghadapi Tes SKD CPNS 2025",
+    excerpt:
+      "Pelajari strategi terbaik untuk menaklukkan Seleksi Kompetensi Dasar (SKD) CPNS dengan persiapan yang tepat dan efektif.",
     content: `
       <p>Seleksi Kompetensi Dasar (SKD) merupakan tahapan awal yang harus dilalui para peserta seleksi CPNS. Tahapan ini seringkali menjadi momok bagi banyak peserta karena tingkat kesulitannya yang cukup tinggi serta passing grade yang terus ditingkatkan setiap tahunnya.</p>
       
@@ -51,16 +52,18 @@ export const blogPosts: BlogPost[] = [
       <p>Dengan persiapan yang tepat dan konsisten, kamu punya peluang lebih besar untuk lolos SKD CPNS. Selamat belajar dan semoga sukses!</p>
     `,
     category: "CPNS",
-    date: "Agustus 15, 2023",
-    imageUrl: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+    date: "Maret 14, 2025",
+    imageUrl:
+      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
   },
   {
     id: "blog-2",
     slug: "memahami-sistem-snbt",
-    title: "Memahami Sistem SNBT 2023: Apa yang Berbeda dari UTBK?",
-    excerpt: "Berbagai perubahan penting dari sistem UTBK ke SNBT dan bagaimana cara terbaik untuk mempersiapkan diri menghadapinya.",
+    title: "Memahami Sistem SNBT 2025: Apa yang Berbeda dari UTBK?",
+    excerpt:
+      "Berbagai perubahan penting dari sistem UTBK ke SNBT dan bagaimana cara terbaik untuk mempersiapkan diri menghadapinya.",
     content: `
-      <p>Sejak tahun 2023, sistem seleksi masuk perguruan tinggi negeri di Indonesia telah berubah dari UTBK-SBMPTN menjadi Seleksi Nasional Berdasarkan Tes (SNBT). Perubahan ini membawa beberapa perbedaan signifikan yang perlu dipahami oleh para calon mahasiswa.</p>
+      <p>Sejak tahun 2025, sistem seleksi masuk perguruan tinggi negeri di Indonesia telah berubah dari UTBK-SBMPTN menjadi Seleksi Nasional Berdasarkan Tes (SNBT). Perubahan ini membawa beberapa perbedaan signifikan yang perlu dipahami oleh para calon mahasiswa.</p>
       
       <h2>Apa itu SNBT?</h2>
       <p>SNBT atau Seleksi Nasional Berdasarkan Tes adalah jalur seleksi masuk perguruan tinggi negeri yang menggantikan UTBK-SBMPTN. SNBT menjadi satu-satunya jalur seleksi nasional berbasis tes untuk masuk PTN, berdampingan dengan SNBP (Seleksi Nasional Berdasarkan Prestasi) yang menggantikan jalur SNMPTN.</p>
@@ -97,14 +100,16 @@ export const blogPosts: BlogPost[] = [
       <p>Perubahan dari UTBK ke SNBT membawa paradigma baru dalam seleksi masuk perguruan tinggi. Fokus kini lebih pada kemampuan dasar dan potensi calon mahasiswa, bukan sekadar penguasaan materi pelajaran. Dengan memahami perbedaan dan menyiapkan strategi yang tepat, calon mahasiswa dapat meningkatkan peluang keberhasilan dalam SNBT.</p>
     `,
     category: "SNBT",
-    date: "Agustus 10, 2023",
-    imageUrl: "https://images.unsplash.com/photo-1519834022362-8c5d13254d53?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+    date: "Maret 11, 2025",
+    imageUrl:
+      "https://images.unsplash.com/photo-1519834022362-8c5d13254d53?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
   },
   {
     id: "blog-3",
     slug: "jenis-psikotes-dan-cara-menaklukkannya",
     title: "5 Jenis Psikotes yang Sering Muncul dan Cara Menaklukkannya",
-    excerpt: "Kenali berbagai jenis psikotes yang sering digunakan dalam seleksi kerja dan pendidikan serta tips menghadapinya.",
+    excerpt:
+      "Kenali berbagai jenis psikotes yang sering digunakan dalam seleksi kerja dan pendidikan serta tips menghadapinya.",
     content: `
       <p>Psikotes menjadi salah satu tahapan seleksi yang umum digunakan perusahaan atau institusi pendidikan untuk mengetahui karakter, kepribadian, dan kemampuan kognitif calon karyawan atau mahasiswa. Berikut adalah 5 jenis psikotes yang sering muncul dan cara menghadapinya:</p>
       
@@ -179,24 +184,27 @@ export const blogPosts: BlogPost[] = [
       <p>Dengan persiapan yang tepat dan pemahaman tentang jenis-jenis psikotes, Anda akan lebih percaya diri dan berpeluang lebih besar untuk sukses menghadapinya.</p>
     `,
     category: "Psikotes",
-    date: "Agustus 5, 2023",
-    imageUrl: "https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80"
-  }
+    date: "Agustus 5, 2024",
+    imageUrl:
+      "https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80",
+  },
 ];
 
 // Get blog posts by category
 export const getBlogPostsByCategory = (category: string): BlogPost[] => {
-  return blogPosts.filter(post => 
-    post.category.toLowerCase() === category.toLowerCase());
+  return blogPosts.filter(
+    (post) => post.category.toLowerCase() === category.toLowerCase(),
+  );
 };
 
 // Get blog post by slug
 export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
-  return blogPosts.find(post => post.slug === slug);
+  return blogPosts.find((post) => post.slug === slug);
 };
 
 // Get latest blog posts
 export const getLatestBlogPosts = (limit: number = 3): BlogPost[] => {
-  return [...blogPosts].sort((a, b) => 
-    new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, limit);
+  return [...blogPosts]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, limit);
 };
