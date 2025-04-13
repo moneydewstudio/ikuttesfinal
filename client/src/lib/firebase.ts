@@ -1,4 +1,3 @@
-
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -11,15 +10,16 @@ import { getFirestore } from "firebase/firestore";
 
 // Validate environment variables
 const requiredEnvVars = [
-  'VITE_FIREBASE_API_KEY',
-  'VITE_FIREBASE_AUTH_DOMAIN',
-  'VITE_FIREBASE_PROJECT_ID',
-  'VITE_FIREBASE_STORAGE_BUCKET',
-  'VITE_FIREBASE_MESSAGING_SENDER_ID',
-  'VITE_FIREBASE_APP_ID',
-  'VITE_FIREBASE_MEASUREMENT_ID'
+  "VITE_FIREBASE_API_KEY",
+  "VITE_FIREBASE_AUTH_DOMAIN",
+  "VITE_FIREBASE_PROJECT_ID",
+  "VITE_FIREBASE_STORAGE_BUCKET",
+  "VITE_FIREBASE_MESSAGING_SENDER_ID",
+  "VITE_FIREBASE_APP_ID",
+  "VITE_FIREBASE_MEASUREMENT_ID",
 ] as const;
 
+console.log("Loaded environment variables:", import.meta.env);
 for (const envVar of requiredEnvVars) {
   if (!import.meta.env[envVar]) {
     throw new Error(`Missing required environment variable: ${envVar}`);
@@ -42,8 +42,8 @@ let app;
 try {
   app = initializeApp(firebaseConfig);
 } catch (error) {
-  if (error.code === 'app/duplicate-app') {
-    app = initializeApp(firebaseConfig, 'default');
+  if (error.code === "app/duplicate-app") {
+    app = initializeApp(firebaseConfig, "default");
   } else {
     throw error;
   }
@@ -84,3 +84,5 @@ export const logout = async () => {
     throw error;
   }
 };
+
+export { app };
