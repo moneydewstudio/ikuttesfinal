@@ -54,48 +54,356 @@ const cpnsTryouts: Tryout[] = [
       },
       {
         id: "cpns1-q3",
-        text: "Menurut UUD 1945, kekuasaan membentuk undang-undang berada di tangan...",
+        text: "Dalam sistem pemerintahan Indonesia, yang bukan merupakan lembaga tinggi negara adalah...",
         options: [
-          { id: "cpns1-q3-a", text: "Presiden" },
-          { id: "cpns1-q3-b", text: "DPR" },
-          { id: "cpns1-q3-c", text: "MPR" },
-          { id: "cpns1-q3-d", text: "MA" }
+          { id: "cpns1-q3-a", text: "Mahkamah Agung" },
+          { id: "cpns1-q3-b", text: "Dewan Perwakilan Rakyat" },
+          { id: "cpns1-q3-c", text: "Komisi Pemberantasan Korupsi" },
+          { id: "cpns1-q3-d", text: "Mahkamah Konstitusi" }
         ],
-        correctAnswerId: "cpns1-q3-b"
+        correctAnswerId: "cpns1-q3-c"
       },
       {
         id: "cpns1-q4",
-        text: "Aparatur Sipil Negara wajib...",
+        text: "Yang bukan merupakan hak-hak seorang ASN adalah...",
         options: [
-          { id: "cpns1-q4-a", text: "Netral dari pengaruh partai politik" },
-          { id: "cpns1-q4-b", text: "Menjadi anggota partai politik" },
-          { id: "cpns1-q4-c", text: "Mendukung calon presiden tertentu" },
-          { id: "cpns1-q4-d", text: "Aktif dalam kegiatan politik" }
+          { id: "cpns1-q4-a", text: "Gaji dan tunjangan" },
+          { id: "cpns1-q4-b", text: "Cuti" },
+          { id: "cpns1-q4-c", text: "Jaminan pensiun" },
+          { id: "cpns1-q4-d", text: "Ikut kampanye politik" }
         ],
-        correctAnswerId: "cpns1-q4-a"
+        correctAnswerId: "cpns1-q4-d"
       },
       {
         id: "cpns1-q5",
-        text: "Yang bukan merupakan asas-asas umum pemerintahan yang baik adalah...",
+        text: "Jumlah provinsi di Indonesia saat ini adalah...",
         options: [
-          { id: "cpns1-q5-a", text: "Kepastian hukum" },
-          { id: "cpns1-q5-b", text: "Keterbukaan" },
-          { id: "cpns1-q5-c", text: "Kepentingan umum" },
-          { id: "cpns1-q5-d", text: "Nepotisme" }
+          { id: "cpns1-q5-a", text: "34 provinsi" },
+          { id: "cpns1-q5-b", text: "35 provinsi" },
+          { id: "cpns1-q5-c", text: "36 provinsi" },
+          { id: "cpns1-q5-d", text: "37 provinsi" }
         ],
         correctAnswerId: "cpns1-q5-d"
       },
       {
         id: "cpns1-q6",
-        text: "Dalam konteks pelayanan publik, akuntabilitas berarti...",
+        text: "UUD 1945 telah mengalami amandemen sebanyak...",
         options: [
-          { id: "cpns1-q6-a", text: "Pelayanan harus cepat" },
-          { id: "cpns1-q6-b", text: "Pelayanan dapat dipertanggungjawabkan" },
-          { id: "cpns1-q6-c", text: "Pelayanan harus murah" },
-          { id: "cpns1-q6-d", text: "Pelayanan harus ramah" }
+          { id: "cpns1-q6-a", text: "3 kali" },
+          { id: "cpns1-q6-b", text: "4 kali" },
+          { id: "cpns1-q6-c", text: "5 kali" },
+          { id: "cpns1-q6-d", text: "6 kali" }
         ],
         correctAnswerId: "cpns1-q6-b"
-      }
+      },
+      {
+        id: "cpns1-q7",
+        text: "Dalam konsep good governance, yang bukan merupakan prinsip-prinsipnya adalah...",
+        options: [
+          { id: "cpns1-q7-a", text: "Transparansi" },
+          { id: "cpns1-q7-b", text: "Akuntabilitas" },
+          { id: "cpns1-q7-c", text: "Partisipasi" },
+          { id: "cpns1-q7-d", text: "Sentralisasi" }
+        ],
+        correctAnswerId: "cpns1-q7-d"
+      },
+      {
+        id: "cpns1-q8",
+        text: "Menurut UU ASN, batas usia pensiun pejabat administrasi adalah...",
+        options: [
+          { id: "cpns1-q8-a", text: "56 tahun" },
+          { id: "cpns1-q8-b", text: "58 tahun" },
+          { id: "cpns1-q8-c", text: "60 tahun" },
+          { id: "cpns1-q8-d", text: "65 tahun" }
+        ],
+        correctAnswerId: "cpns1-q8-b"
+      },
+      {
+        id: "cpns1-q9",
+        text: "Yang bukan merupakan asas penyelenggaraan kebijakan dan manajemen ASN adalah...",
+        options: [
+          { id: "cpns1-q9-a", text: "Profesionalitas" },
+          { id: "cpns1-q9-b", text: "Netralitas" },
+          { id: "cpns1-q9-c", text: "Hierarki" },
+          { id: "cpns1-q9-d", text: "Patronase" }
+        ],
+        correctAnswerId: "cpns1-q9-d"
+      },
+      {
+        id: "cpns1-q10",
+        text: "Lembaga yang memiliki kewenangan melakukan pengawasan terhadap keuangan negara adalah...",
+        options: [
+          { id: "cpns1-q10-a", text: "BPK" },
+          { id: "cpns1-q10-b", text: "BPKP" },
+          { id: "cpns1-q10-c", text: "DPR" },
+          { id: "cpns1-q10-d", text: "KPK" }
+        ],
+        correctAnswerId: "cpns1-q10-a"
+      },
+      {
+        id: "cpns1-q11",
+        text: "Dalam konteks pelayanan publik, empati berarti...",
+        options: [
+          { id: "cpns1-q11-a", text: "Kemampuan melayani dengan cepat" },
+          { id: "cpns1-q11-b", text: "Kemampuan memahami kebutuhan masyarakat" },
+          { id: "cpns1-q11-c", text: "Kemampuan memberikan pelayanan tepat waktu" },
+          { id: "cpns1-q11-d", text: "Kemampuan menyelesaikan masalah" }
+        ],
+        correctAnswerId: "cpns1-q11-b"
+      },
+      {
+        id: "cpns1-q12",
+        text: "Fungsi APBN yang benar adalah...",
+        options: [
+          { id: "cpns1-q12-a", text: "Otorisasi, perencanaan, pengawasan, alokasi" },
+          { id: "cpns1-q12-b", text: "Stabilisasi, alokasi, distribusi, otorisasi" },
+          { id: "cpns1-q12-c", text: "Perencanaan, otorisasi, pengawasan, distribusi" },
+          { id: "cpns1-q12-d", text: "Alokasi, distribusi, stabilisasi, pengawasan" }
+        ],
+        correctAnswerId: "cpns1-q12-a"
+      },
+      {
+        id: "cpns1-q13",
+        text: "Periode masa jabatan anggota DPR RI adalah...",
+        options: [
+          { id: "cpns1-q13-a", text: "3 tahun" },
+          { id: "cpns1-q13-b", text: "4 tahun" },
+          { id: "cpns1-q13-c", text: "5 tahun" },
+          { id: "cpns1-q13-d", text: "6 tahun" }
+        ],
+        correctAnswerId: "cpns1-q13-c"
+      },
+      {
+        id: "cpns1-q14",
+        text: "Yang bukan merupakan syarat pembentukan daerah otonom baru adalah...",
+        options: [
+          { id: "cpns1-q14-a", text: "Kemampuan ekonomi" },
+          { id: "cpns1-q14-b", text: "Potensi daerah" },
+          { id: "cpns1-q14-c", text: "Luas wilayah" },
+          { id: "cpns1-q14-d", text: "Jumlah partai politik" }
+        ],
+        correctAnswerId: "cpns1-q14-d"
+      },
+      {
+        id: "cpns1-q15",
+        text: "Prinsip penyelenggaraan pemerintahan daerah adalah...",
+        options: [
+          { id: "cpns1-q15-a", text: "Otonomi seluas-luasnya" },
+          { id: "cpns1-q15-b", text: "Sentralisasi" },
+          { id: "cpns1-q15-c", text: "Dekonsentrasi" },
+          { id: "cpns1-q15-d", text: "Tugas pembantuan" }
+        ],
+        correctAnswerId: "cpns1-q15-a"
+      },
+      {
+        id: "cpns1-q16",
+        text: "Salah satu tujuan reformasi birokrasi adalah...",
+        options: [
+          { id: "cpns1-q16-a", text: "Menciptakan birokrasi yang kuat" },
+          { id: "cpns1-q16-b", text: "Menciptakan birokrasi yang bersih dan akuntabel" },
+          { id: "cpns1-q16-c", text: "Memperbesar struktur organisasi" },
+          { id: "cpns1-q16-d", text: "Menambah jumlah pegawai" }
+        ],
+        correctAnswerId: "cpns1-q16-b"
+      },
+      {
+        id: "cpns1-q17",
+        text: "Pengertian yang tepat tentang desentralisasi adalah...",
+        options: [
+          { id: "cpns1-q17-a", text: "Penyerahan wewenang pemerintahan oleh pemerintah pusat kepada daerah otonom" },
+          { id: "cpns1-q17-b", text: "Pelimpahan wewenang dari atasan kepada bawahan" },
+          { id: "cpns1-q17-c", text: "Pelimpahan wewenang dari pusat ke daerah administratif" },
+          { id: "cpns1-q17-d", text: "Pemberian tugas dari pemerintah pusat kepada daerah" }
+        ],
+        correctAnswerId: "cpns1-q17-a"
+      },
+      {
+        id: "cpns1-q18",
+        text: "Asas yang menyatakan bahwa setiap kegiatan dan hasil akhir dari kegiatan penyelenggara negara harus dapat dipertanggungjawabkan kepada masyarakat sebagai pemegang kedaulatan tertinggi negara adalah...",
+        options: [
+          { id: "cpns1-q18-a", text: "Asas kepastian hukum" },
+          { id: "cpns1-q18-b", text: "Asas keterbukaan" },
+          { id: "cpns1-q18-c", text: "Asas akuntabilitas" },
+          { id: "cpns1-q18-d", text: "Asas profesionalitas" }
+        ],
+        correctAnswerId: "cpns1-q18-c"
+      },
+      {
+        id: "cpns1-q19",
+        text: "Menurut UU ASN, Pegawai ASN terdiri dari...",
+        options: [
+          { id: "cpns1-q19-a", text: "PNS dan PPPK" },
+          { id: "cpns1-q19-b", text: "PNS dan PTT" },
+          { id: "cpns1-q19-c", text: "PNS dan Honorer" },
+          { id: "cpns1-q19-d", text: "PPPK dan PTT" }
+        ],
+        correctAnswerId: "cpns1-q19-a"
+      },
+      {
+        id: "cpns1-q20",
+        text: "Yang bukan merupakan fungsi DPRD adalah...",
+        options: [
+          { id: "cpns1-q20-a", text: "Legislasi" },
+          { id: "cpns1-q20-b", text: "Anggaran" },
+          { id: "cpns1-q20-c", text: "Pengawasan" },
+          { id: "cpns1-q20-d", text: "Yudikatif" }
+        ],
+        correctAnswerId: "cpns1-q20-d"
+      },
+      {
+        id: "cpns1-q21",
+        text: "Sistem pemerintahan Indonesia menurut UUD 1945 adalah...",
+        options: [
+          { id: "cpns1-q21-a", text: "Presidensial" },
+          { id: "cpns1-q21-b", text: "Parlementer" },
+          { id: "cpns1-q21-c", text: "Campuran" },
+          { id: "cpns1-q21-d", text: "Federal" }
+        ],
+        correctAnswerId: "cpns1-q21-a"
+      },
+      {
+        id: "cpns1-q22",
+        text: "Program reformasi birokrasi nasional dilaksanakan dalam periode...",
+        options: [
+          { id: "cpns1-q22-a", text: "3 tahun" },
+          { id: "cpns1-q22-b", text: "4 tahun" },
+          { id: "cpns1-q22-c", text: "5 tahun" },
+          { id: "cpns1-q22-d", text: "6 tahun" }
+        ],
+        correctAnswerId: "cpns1-q22-c"
+      },
+      {
+        id: "cpns1-q23",
+        text: "Pejabat yang berwenang dalam pengangkatan CPNS adalah...",
+        options: [
+          { id: "cpns1-q23-a", text: "Presiden" },
+          { id: "cpns1-q23-b", text: "Menteri" },
+          { id: "cpns1-q23-c", text: "Kepala BKN" },
+          { id: "cpns1-q23-d", text: "Pejabat Pembina Kepegawaian" }
+        ],
+        correctAnswerId: "cpns1-q23-d"
+      },
+      {
+        id: "cpns1-q24",
+        text: "Yang bukan merupakan jenis-jenis pelayanan publik menurut UU No. 25 Tahun 2009 adalah...",
+        options: [
+          { id: "cpns1-q24-a", text: "Pelayanan administratif" },
+          { id: "cpns1-q24-b", text: "Pelayanan barang publik" },
+          { id: "cpns1-q24-c", text: "Pelayanan jasa publik" },
+          { id: "cpns1-q24-d", text: "Pelayanan politik" }
+        ],
+        correctAnswerId: "cpns1-q24-d"
+      },
+      {
+        id: "cpns1-q25",
+        text: "Konsep New Public Management (NPM) menekankan pada...",
+        options: [
+          { id: "cpns1-q25-a", text: "Birokrasi yang kaku" },
+          { id: "cpns1-q25-b", text: "Orientasi pada hasil" },
+          { id: "cpns1-q25-c", text: "Sentralisasi kewenangan" },
+          { id: "cpns1-q25-d", text: "Prosedur yang kompleks" }
+        ],
+        correctAnswerId: "cpns1-q25-b"
+      },
+      {
+        id: "cpns1-q26",
+        text: "Yang bukan merupakan nilai dasar ASN adalah...",
+        options: [
+          { id: "cpns1-q26-a", text: "Akuntabilitas" },
+          { id: "cpns1-q26-b", text: "Nasionalisme" },
+          { id: "cpns1-q26-c", text: "Etika publik" },
+          { id: "cpns1-q26-d", text: "Materialisme" }
+        ],
+        correctAnswerId: "cpns1-q26-d"
+      },
+      {
+        id: "cpns1-q27",
+        text: "Menurut UU ASN, manajemen ASN diselenggarakan berdasarkan sistem...",
+        options: [
+          { id: "cpns1-q27-a", text: "Merit" },
+          { id: "cpns1-q27-b", text: "Karir" },
+          { id: "cpns1-q27-c", text: "Prestasi" },
+          { id: "cpns1-q27-d", text: "Senioritas" }
+        ],
+        correctAnswerId: "cpns1-q27-a"
+      },
+      {
+        id: "cpns1-q28",
+        text: "Hak budget DPR adalah...",
+        options: [
+          { id: "cpns1-q28-a", text: "Hak mengajukan RUU" },
+          { id: "cpns1-q28-b", text: "Hak mengawasi jalannya pemerintahan" },
+          { id: "cpns1-q28-c", text: "Hak menetapkan APBN" },
+          { id: "cpns1-q28-d", text: "Hak mengajukan pertanyaan" }
+        ],
+        correctAnswerId: "cpns1-q28-c"
+      },
+      {
+        id: "cpns1-q29",
+        text: "Yang bukan merupakan unsur pelayanan publik adalah...",
+        options: [
+          { id: "cpns1-q29-a", text: "Penyedia layanan" },
+          { id: "cpns1-q29-b", text: "Penerima layanan" },
+          { id: "cpns1-q29-c", text: "Jenis layanan" },
+          { id: "cpns1-q29-d", text: "Keuntungan pribadi" }
+        ],
+        correctAnswerId: "cpns1-q29-d"
+      },
+      {
+        id: "cpns1-q30",
+        text: "Instansi yang memiliki kewenangan pembinaan ASN secara nasional adalah...",
+        options: [
+          { id: "cpns1-q30-a", text: "Kementerian PAN-RB" },
+          { id: "cpns1-q30-b", text: "BKN" },
+          { id: "cpns1-q30-c", text: "LAN" },
+          { id: "cpns1-q30-d", text: "KASN" }
+        ],
+        correctAnswerId: "cpns1-q30-a"
+      },
+      {
+        id: "cpns1-q31",
+        text: "Berdasarkan UU ASN, yang bukan merupakan fungsi ASN adalah...",
+        options: [
+          { id: "cpns1-q31-a", text: "Pelaksana kebijakan publik" },
+          { id: "cpns1-q31-b", text: "Pelayan publik" },
+          { id: "cpns1-q31-c", text: "Perekat dan pemersatu bangsa" },
+          { id: "cpns1-q31-d", text: "Pembuat kebijakan politik" }
+        ],
+        correctAnswerId: "cpns1-q31-d"
+      },
+      {
+        id: "cpns1-q32",
+        text: "Batas usia pensiun pejabat fungsional adalah...",
+        options: [
+          { id: "cpns1-q32-a", text: "58 tahun" },
+          { id: "cpns1-q32-b", text: "60 tahun" },
+          { id: "cpns1-q32-c", text: "65 tahun" },
+          { id: "cpns1-q32-d", text: "70 tahun" }
+        ],
+        correctAnswerId: "cpns1-q32-c"
+      },
+      //Adding 20 placeholder questions
+      { id: "cpns1-q33", text: "Placeholder Question 33", options: [{ id: "cpns1-q33-a", text: "A" }, { id: "cpns1-q33-b", text: "B" }, { id: "cpns1-q33-c", text: "C" }, { id: "cpns1-q33-d", text: "D" }], correctAnswerId: "cpns1-q33-a" },
+      { id: "cpns1-q34", text: "Placeholder Question 34", options: [{ id: "cpns1-q34-a", text: "A" }, { id: "cpns1-q34-b", text: "B" }, { id: "cpns1-q34-c", text: "C" }, { id: "cpns1-q34-d", text: "D" }], correctAnswerId: "cpns1-q34-a" },
+      { id: "cpns1-q35", text: "Placeholder Question 35", options: [{ id: "cpns1-q35-a", text: "A" }, { id: "cpns1-q35-b", text: "B" }, { id: "cpns1-q35-c", text: "C" }, { id: "cpns1-q35-d", text: "D" }], correctAnswerId: "cpns1-q35-a" },
+      { id: "cpns1-q36", text: "Placeholder Question 36", options: [{ id: "cpns1-q36-a", text: "A" }, { id: "cpns1-q36-b", text: "B" }, { id: "cpns1-q36-c", text: "C" }, { id: "cpns1-q36-d", text: "D" }], correctAnswerId: "cpns1-q36-a" },
+      { id: "cpns1-q37", text: "Placeholder Question 37", options: [{ id: "cpns1-q37-a", text: "A" }, { id: "cpns1-q37-b", text: "B" }, { id: "cpns1-q37-c", text: "C" }, { id: "cpns1-q37-d", text: "D" }], correctAnswerId: "cpns1-q37-a" },
+      { id: "cpns1-q38", text: "Placeholder Question 38", options: [{ id: "cpns1-q38-a", text: "A" }, { id: "cpns1-q38-b", text: "B" }, { id: "cpns1-q38-c", text: "C" }, { id: "cpns1-q38-d", text: "D" }], correctAnswerId: "cpns1-q38-a" },
+      { id: "cpns1-q39", text: "Placeholder Question 39", options: [{ id: "cpns1-q39-a", text: "A" }, { id: "cpns1-q39-b", text: "B" }, { id: "cpns1-q39-c", text: "C" }, { id: "cpns1-q39-d", text: "D" }], correctAnswerId: "cpns1-q39-a" },
+      { id: "cpns1-q40", text: "Placeholder Question 40", options: [{ id: "cpns1-q40-a", text: "A" }, { id: "cpns1-q40-b", text: "B" }, { id: "cpns1-q40-c", text: "C" }, { id: "cpns1-q40-d", text: "D" }], correctAnswerId: "cpns1-q40-a" },
+      { id: "cpns1-q41", text: "Placeholder Question 41", options: [{ id: "cpns1-q41-a", text: "A" }, { id: "cpns1-q41-b", text: "B" }, { id: "cpns1-q41-c", text: "C" }, { id: "cpns1-q41-d", text: "D" }], correctAnswerId: "cpns1-q41-a" },
+      { id: "cpns1-q42", text: "Placeholder Question 42", options: [{ id: "cpns1-q42-a", text: "A" }, { id: "cpns1-q42-b", text: "B" }, { id: "cpns1-q42-c", text: "C" }, { id: "cpns1-q42-d", text: "D" }], correctAnswerId: "cpns1-q42-a" },
+      { id: "cpns1-q43", text: "Placeholder Question 43", options: [{ id: "cpns1-q43-a", text: "A" }, { id: "cpns1-q43-b", text: "B" }, { id: "cpns1-q43-c", text: "C" }, { id: "cpns1-q43-d", text: "D" }], correctAnswerId: "cpns1-q43-a" },
+      { id: "cpns1-q44", text: "Placeholder Question 44", options: [{ id: "cpns1-q44-a", text: "A" }, { id: "cpns1-q44-b", text: "B" }, { id: "cpns1-q44-c", text: "C" }, { id: "cpns1-q44-d", text: "D" }], correctAnswerId: "cpns1-q44-a" },
+      { id: "cpns1-q45", text: "Placeholder Question 45", options: [{ id: "cpns1-q45-a", text: "A" }, { id: "cpns1-q45-b", text: "B" }, { id: "cpns1-q45-c", text: "C" }, { id: "cpns1-q45-d", text: "D" }], correctAnswerId: "cpns1-q45-a" },
+      { id: "cpns1-q46", text: "Placeholder Question 46", options: [{ id: "cpns1-q46-a", text: "A" }, { id: "cpns1-q46-b", text: "B" }, { id: "cpns1-q46-c", text: "C" }, { id: "cpns1-q46-d", text: "D" }], correctAnswerId: "cpns1-q46-a" },
+      { id: "cpns1-q47", text: "Placeholder Question 47", options: [{ id: "cpns1-q47-a", text: "A" }, { id: "cpns1-q47-b", text: "B" }, { id: "cpns1-q47-c", text: "C" }, { id: "cpns1-q47-d", text: "D" }], correctAnswerId: "cpns1-q47-a" },
+      { id: "cpns1-q48", text: "Placeholder Question 48", options: [{ id: "cpns1-q48-a", text: "A" }, { id: "cpns1-q48-b", text: "B" }, { id: "cpns1-q48-c", text: "C" }, { id: "cpns1-q48-d", text: "D" }], correctAnswerId: "cpns1-q48-a" },
+      { id: "cpns1-q49", text: "Placeholder Question 49", options: [{ id: "cpns1-q49-a", text: "A" }, { id: "cpns1-q49-b", text: "B" }, { id: "cpns1-q49-c", text: "C" }, { id: "cpns1-q49-d", text: "D" }], correctAnswerId: "cpns1-q49-a" },
+      { id: "cpns1-q50", text: "Placeholder Question 50", options: [{ id: "cpns1-q50-a", text: "A" }, { id: "cpns1-q50-b", text: "B" }, { id: "cpns1-q50-c", text: "C" }, { id: "cpns1-q50-d", text: "D" }], correctAnswerId: "cpns1-q50-a" },
+      { id: "cpns1-q51", text: "Placeholder Question 51", options: [{ id: "cpns1-q51-a", text: "A" }, { id: "cpns1-q51-b", text: "B" }, { id: "cpns1-q51-c", text: "C" }, { id: "cpns1-q51-d", text: "D" }], correctAnswerId: "cpns1-q51-a" },
+      { id: "cpns1-q52", text: "Placeholder Question 52", options: [{ id: "cpns1-q52-a", text: "A" }, { id: "cpns1-q52-b", text: "B" }, { id: "cpns1-q52-c", text: "C" }, { id: "cpns1-q52-d", text: "D" }], correctAnswerId: "cpns1-q52-a" }
+
     ]
   },
   {
