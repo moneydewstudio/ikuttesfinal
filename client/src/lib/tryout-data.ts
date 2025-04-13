@@ -51,6 +51,50 @@ const cpnsTryouts: Tryout[] = [
           { id: "cpns1-q2-d", text: "Semua jawaban benar" }
         ],
         correctAnswerId: "cpns1-q2-d"
+      },
+      {
+        id: "cpns1-q3",
+        text: "Menurut UUD 1945, kekuasaan membentuk undang-undang berada di tangan...",
+        options: [
+          { id: "cpns1-q3-a", text: "Presiden" },
+          { id: "cpns1-q3-b", text: "DPR" },
+          { id: "cpns1-q3-c", text: "MPR" },
+          { id: "cpns1-q3-d", text: "MA" }
+        ],
+        correctAnswerId: "cpns1-q3-b"
+      },
+      {
+        id: "cpns1-q4",
+        text: "Aparatur Sipil Negara wajib...",
+        options: [
+          { id: "cpns1-q4-a", text: "Netral dari pengaruh partai politik" },
+          { id: "cpns1-q4-b", text: "Menjadi anggota partai politik" },
+          { id: "cpns1-q4-c", text: "Mendukung calon presiden tertentu" },
+          { id: "cpns1-q4-d", text: "Aktif dalam kegiatan politik" }
+        ],
+        correctAnswerId: "cpns1-q4-a"
+      },
+      {
+        id: "cpns1-q5",
+        text: "Yang bukan merupakan asas-asas umum pemerintahan yang baik adalah...",
+        options: [
+          { id: "cpns1-q5-a", text: "Kepastian hukum" },
+          { id: "cpns1-q5-b", text: "Keterbukaan" },
+          { id: "cpns1-q5-c", text: "Kepentingan umum" },
+          { id: "cpns1-q5-d", text: "Nepotisme" }
+        ],
+        correctAnswerId: "cpns1-q5-d"
+      },
+      {
+        id: "cpns1-q6",
+        text: "Dalam konteks pelayanan publik, akuntabilitas berarti...",
+        options: [
+          { id: "cpns1-q6-a", text: "Pelayanan harus cepat" },
+          { id: "cpns1-q6-b", text: "Pelayanan dapat dipertanggungjawabkan" },
+          { id: "cpns1-q6-c", text: "Pelayanan harus murah" },
+          { id: "cpns1-q6-d", text: "Pelayanan harus ramah" }
+        ],
+        correctAnswerId: "cpns1-q6-b"
       }
     ]
   },
@@ -143,6 +187,39 @@ const snbtTryouts: Tryout[] = [
           { id: "snbt2-q1-d", text: "The economic impact of transitioning to green energy" }
         ],
         correctAnswerId: "snbt2-q1-b"
+      },
+      {
+        id: "snbt2-q2",
+        text: "Sebuah toko memberikan diskon 20% untuk pembelian di atas Rp200.000. Jika Ana membeli barang seharga Rp250.000, berapa yang harus dibayar?",
+        options: [
+          { id: "snbt2-q2-a", text: "Rp200.000" },
+          { id: "snbt2-q2-b", text: "Rp150.000" },
+          { id: "snbt2-q2-c", text: "Rp180.000" },
+          { id: "snbt2-q2-d", text: "Rp190.000" }
+        ],
+        correctAnswerId: "snbt2-q2-a"
+      },
+      {
+        id: "snbt2-q3",
+        text: "Jika 2x + 3y = 12 dan 3x - 2y = 9, maka nilai x adalah...",
+        options: [
+          { id: "snbt2-q3-a", text: "3" },
+          { id: "snbt2-q3-b", text: "4" },
+          { id: "snbt2-q3-c", text: "5" },
+          { id: "snbt2-q3-d", text: "6" }
+        ],
+        correctAnswerId: "snbt2-q3-a"
+      },
+      {
+        id: "snbt2-q4",
+        text: "What is the main idea of the following sentence: 'Despite advances in renewable energy, fossil fuels still dominate global energy production.'",
+        options: [
+          { id: "snbt2-q4-a", text: "Renewable energy is not effective" },
+          { id: "snbt2-q4-b", text: "Fossil fuels remain the primary energy source globally" },
+          { id: "snbt2-q4-c", text: "Global energy production is decreasing" },
+          { id: "snbt2-q4-d", text: "Energy production is becoming more expensive" }
+        ],
+        correctAnswerId: "snbt2-q4-b"
       }
     ]
   }
