@@ -1,6 +1,9 @@
 import { Link } from "wouter";
 import { BookOpen, Instagram, Twitter, Youtube } from "lucide-react";
 
+import AdSense from '../ads/AdSense';
+
+
 export function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
