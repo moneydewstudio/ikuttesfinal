@@ -38,17 +38,18 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-let app;
+let firebaseApp;
 try {
-  app = initializeApp(firebaseConfig);
+  firebaseApp = initializeApp(firebaseConfig);
 } catch (error) {
   if (error.code === 'app/duplicate-app') {
-    app = initializeApp(firebaseConfig, 'default');
+    firebaseApp = initializeApp(firebaseConfig, 'default');
   } else {
     throw error;
   }
 }
 
+export const app = firebaseApp;
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
