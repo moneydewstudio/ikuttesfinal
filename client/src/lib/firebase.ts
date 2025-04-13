@@ -1,16 +1,26 @@
+
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, signOut } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
+// Ensure all required environment variables are present
+const requireEnvVar = (name: string): string => {
+  const value = import.meta.env[name];
+  if (!value) {
+    throw new Error(`Missing required environment variable: ${name}`);
+  }
+  return value;
+};
+
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+  apiKey: requireEnvVar('VITE_FIREBASE_API_KEY'),
+  authDomain: requireEnvVar('VITE_FIREBASE_AUTH_DOMAIN'),
+  projectId: requireEnvVar('VITE_FIREBASE_PROJECT_ID'),
+  storageBucket: requireEnvVar('VITE_FIREBASE_STORAGE_BUCKET'),
+  messagingSenderId: requireEnvVar('VITE_FIREBASE_MESSAGING_SENDER_ID'),
+  appId: requireEnvVar('VITE_FIREBASE_APP_ID'),
+  measurementId: requireEnvVar('VITE_FIREBASE_MEASUREMENT_ID')
 };
 
 // Initialize Firebase
@@ -23,9 +33,6 @@ export const loginWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
   try {
     await signInWithRedirect(auth, provider);
-    // The user will be redirected to the Google sign-in page
-    // After signing in, they'll be redirected back to the app
-    // The redirect result will be handled in handleRedirectResult function
   } catch (error) {
     console.error("Error signing in with Google", error);
     throw error;
@@ -36,7 +43,6 @@ export const handleRedirectResult = async () => {
   try {
     const result = await getRedirectResult(auth);
     if (result) {
-      // User successfully signed in
       return result.user;
     }
     return null;
